@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2017 at 03:30 AM
+-- Generation Time: Feb 25, 2017 at 03:52 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -38,37 +38,6 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'admin');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `evaluation`
---
-
-CREATE TABLE `evaluation` (
-  `id` int(11) NOT NULL,
-  `teach_id` int(11) NOT NULL,
-  `c1` int(11) NOT NULL,
-  `c2` int(11) NOT NULL,
-  `c3` int(11) NOT NULL,
-  `c4` int(11) NOT NULL,
-  `c5` int(11) NOT NULL,
-  `c6` int(11) NOT NULL,
-  `c7` int(11) NOT NULL,
-  `c8` int(11) NOT NULL,
-  `STRENGTHS` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `evaluation`
---
-
-INSERT INTO `evaluation` (`id`, `teach_id`, `c1`, `c2`, `c3`, `c4`, `c5`, `c6`, `c7`, `c8`, `STRENGTHS`) VALUES
-(42, 27, 1, 1, 1, 1, 1, 1, 1, 1, 'Adsfasdfadsfadsfdasf'),
-(43, 27, 1, 1, 1, 1, 1, 1, 1, 1, 'Adsfasdfadsfadsfdasf'),
-(44, 27, 1, 1, 1, 1, 1, 1, 1, 1, 'Adsfasdfadsfadsfdasf'),
-(45, 27, 2, 3, 4, 4, 4, 4, 4, 4, 'Asfadsfasdfadsfadsfadsfadsfadf'),
-(46, 27, 2, 3, 4, 4, 4, 4, 4, 4, 'Asfadsfasdfadsfadsfadsfadsfadf');
 
 -- --------------------------------------------------------
 
@@ -149,7 +118,9 @@ INSERT INTO `users` (`id`, `code`) VALUES
 CREATE TABLE `votes` (
   `id` int(11) NOT NULL,
   `code` varchar(100) NOT NULL,
-  `teacher_name` varchar(100) NOT NULL
+  `teacher_name` varchar(100) NOT NULL,
+  `STRENGTHS` varchar(300) NOT NULL,
+  `WEAKNESSES` varchar(300) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -160,12 +131,6 @@ CREATE TABLE `votes` (
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `evaluation`
---
-ALTER TABLE `evaluation`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -201,11 +166,6 @@ ALTER TABLE `votes`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `evaluation`
---
-ALTER TABLE `evaluation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `subject`
 --
