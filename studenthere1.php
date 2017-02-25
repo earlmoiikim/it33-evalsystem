@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include 'database/database.php';
 
 if (isset($_POST['submit'])) {
@@ -12,7 +12,8 @@ if (isset($_POST['submit'])) {
                    $us = $row['code'];
 
                    if($us == $user){
-                    header('Location: http://localhost/IT33/tt.php');
+                    $_SESSION['code'] = $user;
+                    header("Location: http://localhost/IT33/tt.php");
 
                    }
                    else{

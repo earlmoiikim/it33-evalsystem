@@ -1,5 +1,5 @@
 <?php
-include './database/database.php';
+include 'database/database.php';
 $test='hidden';
 $msg = '';
 $temp = '';
@@ -185,7 +185,7 @@ p.capitalize {
 <pre>
 <p align="center">TEACHER'S INFORMATION</p>
   EMPLOYEE ID     : <input type="text" name="empid" size="30" style="text-transform:uppercase;" height= "100" pattern="^[a-zA-Z]{3}[0-9-_\]{3}" required title="Example format: SMT-123" required><br>
-   EMPLOYEE NAME   : <input type="text" name="name" required style="text-transform:uppercase;" placeholder="first name - last name"> <br> 
+  EMPLOYEE NAME   : <input type="text" name="name" required style="text-transform:uppercase;" placeholder="first name - last name"> <br> 
   DEPARTMENT      : <select name="dept" required> 
   <option>--Select--</option>
   <option value="ICT"> ICT </option>
