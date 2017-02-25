@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2017 at 07:58 PM
+-- Generation Time: Feb 25, 2017 at 03:30 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -114,8 +114,7 @@ CREATE TABLE `teachers` (
 
 INSERT INTO `teachers` (`id`, `emp_id`, `name`, `department`) VALUES
 (20, '434347', 'SHERYL MAE RODRIGUEZ', 'ICT'),
-(21, '121211', 'MODESTO TARRAZONA', 'ICT'),
-(22, '857394', 'CHERYL AMANTE', 'ICT');
+(21, '121211', 'MODESTO TARRAZONA', 'ICT');
 
 -- --------------------------------------------------------
 
@@ -136,7 +135,22 @@ INSERT INTO `users` (`id`, `code`) VALUES
 (1, 'YKLrm39'),
 (2, 'B9Dht7b'),
 (3, 'B87KMKI'),
-(4, 'UfFxGWm');
+(4, 'UfFxGWm'),
+(5, 'YHXrj4C'),
+(6, 'RHiLwPv'),
+(7, 'MIsPysd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `votes`
+--
+
+CREATE TABLE `votes` (
+  `id` int(11) NOT NULL,
+  `code` varchar(100) NOT NULL,
+  `teacher_name` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -173,6 +187,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `votes`
+--
+ALTER TABLE `votes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -195,12 +215,17 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `votes`
+--
+ALTER TABLE `votes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
