@@ -3,7 +3,7 @@
 include './database/database.php';
   $dbs = connect();
   $query = $dbs->prepare("SELECT * from subject 
-  	inner join teachers ON subject.teacher = teachers.id");
+  	inner join teachers ON subject.teacher = teachers.name");
   $query->execute();
   $results = $query->fetchAll(PDO::FETCH_OBJ);
 
@@ -72,19 +72,13 @@ table{
 	<tr>
 		<th>Department</th>
 		<th>Teacher Name</th>
-		<th>Excellent</th>
-		<th>Average</th>
-		<th>Good</th>
-		<th>Poor</th>
+		<th>Evaluation Grade</th>
 	</tr>
 	<?php foreach($results as $g): ?>
 	<tr>
 		<td><?php echo $g->department ?></td>
-		<td><?php echo $g->name ?></td>
-		<td><?php echo $g->e4 ?></td>
-		<td><?php echo $g->e3 ?></td>
-		<td><?php echo $g->e2 ?></td>
-		<td><?php echo $g->e1 ?></td>
+		<td><?php echo $g->teacher ?></td>
+		<td><?php echo $g->grade ?></td>
 	</tr>
 	<?php endforeach; ?>
 </table>

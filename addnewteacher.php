@@ -5,6 +5,7 @@ $msg = '';
 $temp = '';
 
 if(isset($_POST['submit'])){
+  echo "FUCK IM HERE";
   $eid = strtoupper($_POST['empid']);
   $tname = strtoupper($_POST['name']);
   $dep = $_POST['dept'];
@@ -181,7 +182,7 @@ p.capitalize {
 
 <div class="back">
 <div class="sclass">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $msg; ?> </div>
-<form action="addnewteacher.php" method="POST">
+<form action="#" method="POST">
 <pre>
 <p align="center">TEACHER'S INFORMATION</p>
   EMPLOYEE ID     : <input type="text" name="empid" size="30" style="text-transform:uppercase;" height= "100" pattern="^[a-zA-Z]{3}[0-9-_\]{3}" required title="Example format: SMT-123" required><br>
@@ -196,7 +197,7 @@ p.capitalize {
   <option value="BA"> B.A </option>
   <option value="CHM"> CHM </option>
 </select>
-         <input type="submit" value="SUBMIT" class="xx"> <a href="chereg.php"> <input type="button" value="CANCEL" class="xx"></a> 
+         <input type="submit" value="SUBMIT" name="submit" class="xx"> <a href="chereg.php"> <input type="button" value="CANCEL" class="xx"></a> 
 
   </pre>
   </form>
