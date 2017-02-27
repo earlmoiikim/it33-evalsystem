@@ -70,15 +70,15 @@ table{
 
 <table border="1" style= "border-collapse: collapse" cellspacing="10" cellpadding="10" align="center">
 	<tr>
-		<th>Department</th>
-		<th>Teacher Name</th>
-		<th>Evaluation Grade</th>
+		<th>Name of Faculty</th>
+		<th>Mean Rating</th>
+		<th>Descriptive Equivalent</th>
 	</tr>
 	<?php foreach($results as $g): ?>
 	<tr>
-		<td><?php echo $g->department ?></td>
 		<td><?php echo $g->teacher ?></td>
 		<td><?php echo $g->grade ?></td>
+		<td><?php echo $g->description ?></td>
 	</tr>
 	<?php endforeach; ?>
 </table>

@@ -4,8 +4,8 @@ $db = connect();
 
 if(isset($_POST['submit'])){
   //ready the teacher
-  $teach = $_POST['teach'];
-
+  echo $teach = $_POST['teach'];
+  echo '<br>';
   // $que = $db->prepare("SELECT * FROM teachers WHERE name = '$teach'");
   // $que->execute();
   // $name = $que->fetch(PDO::FETCH_OBJ);
@@ -62,22 +62,41 @@ if(isset($_POST['submit'])){
 
 		  //add together
 		  echo $score = $score + $c_score;
+		  echo '<br>';
 		  echo $count = $count + 1; //just increment the student count
-
+		  echo '<br>';
 		  //get overall grade divide by 8 then divide by student count
 		  echo $grade = ($score / 8) / $count;
+
+		  if($grade >= 1 && $grade <= 1.85){
+		  	$description = "Ineffective";
+		  }
+		  elseif ($grade > 1.85 && $grade <= 2.65) {
+		  	$description = "Partially Effective";
+		  }
+		  elseif ($grade > 2.65 && $grade <= 3.5) {
+		  	$description = "Effective";
+		  }
+		  else{
+		  	$description = "Highly Effective";
+		  }
+
+		  echo '<br> '.$description.' <br>';
+
+		  echo "new grade ".$grade = number_format($grade, 1, '.', ',');
+		  echo '<br>';
 
 		  $db = connect();
 		  if($found){ //if the teacher already exist
 		    //use update query
 		    $query2 = $db->prepare("UPDATE subject SET score = '$score', 
-		    	students = '$count', grade = '$grade' WHERE teacher = '$teach'");
+		    	students = '$count', grade = '$grade', description = '$description' WHERE teacher = '$teach'");
 		  }
 		  else{
 		    //if the teacher did not exist yet
 		    //use insert into query
 		    $query2 = $db->prepare("INSERT INTO subject SET teacher = '$teach', 
-		    	score = '$score', students = '$count', grade = '$grade'");
+		    	score = '$score', students = '$count', grade = '$grade', description = '$description'");
 		  }
 		  
 		 	//then insert into votes table the record of this particular student evaluating this particular teacher and the comments
