@@ -5,7 +5,6 @@ $msg = '';
 $temp = '';
 
 if(isset($_POST['submit'])){
-  echo "FUCK IM HERE";
   $eid = strtoupper($_POST['empid']);
   $tname = strtoupper($_POST['name']);
   $dep = $_POST['dept'];
@@ -105,8 +104,8 @@ input[type=text], select {
 }
 #inside{
   position: absolute;
-  top: 330px;
-  left: 0;
+  top: 280px;
+  left: 100px;
   right: 0;
   bottom: 0;
   margin: auto;
@@ -114,7 +113,7 @@ input[type=text], select {
   color: black;
   font-weight: bold;
   width: 500px;
-  height: 400px;
+  height: 350px;
   background-color: #ededed;
   border: 3px blue;
   border-style: solid;
@@ -136,12 +135,26 @@ div.sclass{
   right: 0;
   text-align: center;
   margin: auto;
-  margin-top: 190px;
+  margin-top: 200px;
   font-weight: bold;
   font-size: 20px;
   color: yellow;
 }
 .xx{
+   color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #006dcc;
+  *background-color: #0044cc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   width: 200px;
   border-radius: 5px;
   height: 50px;
@@ -181,12 +194,12 @@ p.capitalize {
 <body style="background:linear-gradient(to bottom right,white,lightblue,white); height:790px">
 
 <div class="back">
-<div class="sclass">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $msg; ?> </div>
+<div class="sclass">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $msg; ?> </div>
 <form action="#" method="POST">
 <pre>
 <p align="center">TEACHER'S INFORMATION</p>
-  EMPLOYEE ID     : <input type="text" name="empid" size="30" style="text-transform:uppercase;" height= "100" pattern="^[a-zA-Z]{3}[0-9-_\]{3}" required title="Example format: SMT-123" required><br>
-  EMPLOYEE NAME   : <input type="text" name="name" required style="text-transform:uppercase;" placeholder="first name - last name"> <br> 
+  EMPLOYEE ID     : <input type="text" name="empid" size="30" style="text-transform:uppercase;" maxlength="7" minlength="7" height= "100" title="Sample format: SRT-102" required><br>
+  EMPLOYEE NAME    : <input type="text" name="name" required style="text-transform:uppercase;" placeholder="first name - last name"> <br> 
   DEPARTMENT      : <select name="dept" required> 
   <option>--Select--</option>
   <option value="ICT"> ICT </option>

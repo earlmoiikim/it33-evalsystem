@@ -8,19 +8,14 @@ $id=$_GET['edit'];
 
 }
 
-
-
 $data = teacherupdate($id);
-    		if($data){
+        if($data){
               foreach($data as $r){
-              	$id = $r['id'];
+                $id = $r['id'];
                 $emp_id = $r['emp_id']; 
                 $name = $r['name'];
                 $department = $r['department'];
-
-
-
-		          }
+              }
 
 }
 
@@ -46,23 +41,23 @@ else
 ?>
 <html>
 <head>
-  <title>Add New Teacher</title>
+  <title>SJPIICD Faculty Evaluation System</title>
 
 <style type="text/css">
-  .back{
+ .back{
   border: 1px solid black;
-  position: absolute;
-  right: 0px;
-  left:0px;
   width: 1000px;
   height: 500px;
-  margin: auto;
-  box-shadow: 0px 8px 20px 20px rgba(255,255,255,0.5);
+  margin-top: -90px;
+  margin-left: 370px;
+    box-shadow: 0px 8px 20px 20px rgba(255,255,255,0.5);
   background-color: #1F618D;
-  font-size: 30px;
+  font-size: 33px;
   font-family: Arial;
-  color: WHITE;
+  text-align: center;
+  color: white;
 }
+
 input[type=text], select {
   font-size: 15px;
     width: 500px;
@@ -74,7 +69,7 @@ input[type=text], select {
     box-sizing: border-box;
 }
 input[type=submit] {
-    width: 800px;
+    width: 830px;
     background-color: #6666ff;
     color: white;
     font-size: 20px;
@@ -82,6 +77,7 @@ input[type=submit] {
     margin: 8px 0;
     border: none;
     border-radius: 4px;
+    margin-top: 20px;
     cursor: pointer;
 }
 #save{
@@ -124,6 +120,34 @@ input[type=submit] {
   font-weight: bolder;
   border-style: solid;
 }
+ .heading{
+  width: 100%;
+  height: 27%;
+  background-color: #2471A3;
+}
+.fes{
+  margin-top: -275px;
+  margin-left: 180px;
+  text-shadow: 3px 4px white;
+  font-family: arial;
+  color: #062F63;
+  font-weight: 800;
+  font-size: 60px;
+}
+.jp{
+  margin-top: -170px;
+  margin-left: 130px;
+  text-shadow: 5px 7px #030301;
+  font-family: arial;
+  color: #FAFF05;
+  font-weight: 700;
+  font-size: 60px;
+}
+
+#image{
+  margin-left: -950px;
+  margin-top: -210px;
+}
 div.sclass{
   position: absolute;
   left: 0;
@@ -135,18 +159,27 @@ div.sclass{
   font-size: 20px;
   color: yellow;
 }
+</style>
 
+<body style="background:linear-gradient(to bottom right,white,lightblue,white); height:790px">
 
-
-</style>  
-</head>
-<body bgcolor="lightblue">
- <br>
- 
-  <p align="center"> <img src="http://localhost/it33/Images/header.jpg" height="280px" width="1500px"> </p>
-  <br>
-<body>
+<center>
+   <div class="heading">
+        <h1 style="margin-top: 30px;"> 
+        </h1>
+   </div>
+     <img id="image" src="../images/logo.png" width="225px" height="225px">
+  <div class="fes">
+     <p align="center"> Faculty Evaluation System </p>
+      <br> 
+  </div>
+  <div class="jp">
+     <p align="center"> -Office of Guidance- </p>
+      <br> 
+  </div>
   
+</center>
+
 <div class="back">
 <div class="sclass">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $msg; ?> </div>
 <form action="edit.php" method="POST">
@@ -154,7 +187,7 @@ div.sclass{
 
 <pre>
 <p align="center">TEACHER'S INFORMATION</p>
-  EMPLOYEE NUMBER : <input type="text" name="empnum" value="<?php echo $emp_id ?>" size="30" height= "100" minlength="6" maxlength="6" required><br> 
+  EMPLOYEE NUMBER : <input type="text" name="empnum" value="<?php echo $emp_id ?>" size="30" height= "100" minlength="7" maxlength="7" title="example format: SRT-123" required><br> 
   EMPLOYEE NAME   : <input type="text" name="name" value="<?php echo $name ?>" required><br>
   DEPARTMENT      : <select name="dept" value="<?php echo $department ?>" required> 
   <option value="<?php echo $department ?>"><?php echo $department ?></option>
@@ -186,5 +219,6 @@ div.sclass{
 
 
 
+</head>
 </body>
 </html>

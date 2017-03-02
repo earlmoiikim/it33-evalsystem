@@ -90,16 +90,14 @@ select {
 }
 input[type=submit] {
      background-color: #057ACA;
-    margin-left: 780px; 
-    padding: 10px;
+    margin-left: 730px; 
     margin-top: -5px;
-    font-size: 25px;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 15px;
     border-radius: 4px;
     height: 50px;
-    width: 130px;
-    font-size: 20px;
+    width: 300px;
+    font-size: 30px;
     cursor: pointer;
     float: left;
 }
@@ -118,6 +116,8 @@ td{
   border: 1px solid;
   margin-top:10px;
   background: #F2F3F4;
+  overflow: scroll;
+
 }
 table{
   width: 100%;
@@ -131,7 +131,7 @@ table{
   left: 0;
   right: 0;
   margin: auto;
-  margin-top: 100px;
+  margin-top: -1200px;
 }
 #save{
   position: absolute;
@@ -187,6 +187,10 @@ table{
   font-size: 20px;
   font-weight: 40px; 
 }
+.font1{
+  color: #E30826;
+   text-decoration: underline;
+}
 
 </style>
 <center>
@@ -210,12 +214,13 @@ table{
 
 <center>
 <div class="top_title">
-  <h1 style="margin-top: -60px;">Select Your Teacher's Name:</h1>
+  <h1 style="margin-top: -70px;">Select Your Teacher's Name:</h1>
+
 
 <!-- go to evalprocess.php for submission evaluation -->
 <form id="insert_form" action="evalprocess.php" method="POST">
 
-<select style="margin-top: -10px;" name="teach">
+<select style="margin-top: -20px;" name="teach">
 <?php foreach ($res as $g):?>
   <option value="<?php echo $g->name; ?>"><?php echo $g->name; ?> </option>  
 <?php endforeach; ?>  
@@ -225,87 +230,444 @@ table{
 <!-- 
 <input type="text"  name="teach" value="<?php //echo $g->id; ?>"> -->
 <div class="divTable">
-<table align="center" cellpadding="4">
+<table align="center" cellpadding="3" cellspacing="3" width="500px">
+   <tr>
+    <td> <font class="font1"> <b> <u> A1. TEACHING SKILLS </u> </b> </font> 
+    </tr>
+    <tr> 
+     <td> <font size="4px"> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> The instructor: </font> </b> </i> </td>
+     </tr>  
   <tr>
-    <td width="600px"><b> 1. The instructor shows enthusiasm for and is interested in the subject. </b></td>
-    <td><input type="radio" name="qq" value="1" required>Strongly Disagree</td>
-    <td><input type="radio" name="qq" value="2" required>Some What Disagree</td>
-    <td><input type="radio" name="qq" value="3" required>Some What agree</td>
-    <td><input type="radio" name="qq" value="4" required>Strongly agree</td>
-  </tr>
-  <!-- Q2 -->
-  <tr>
-    <td width="600px"> <b> 2. The instructor stimulates your interest in the subject. </b></td>
-    <td><input type="radio" name="qx" value="1" required>Strongly Disagree</td>
-    <td><input type="radio" name="qx" value="2" required>Some What Disagree</td>
-    <td><input type="radio" name="qx" value="3" required>Some What agree</td>
-    <td><input type="radio" name="qx" value="4" required>Strongly agree</td>
-  </tr>
-  <!-- Q3 -->
-  <tr>
-    <td width="600px"><b>3. The instructor encourages the students to ask questions. </b></td>
-    <td><input type="radio" name="qy" value="1" required>Strongly Disagree</td>
-    <td><input type="radio" name="qy" value="2" required>Some What Disagree</td>
-    <td><input type="radio" name="qy" value="3" required>Some What agree</td>
-    <td><input type="radio" name="qy" value="4" required>Strongly agree</td>
-  </tr>
-  <!-- Q4 -->
+    <td><b> 1. discusses the course outline, objectives, and expectations. </b></td>
+    <td> <select name="ts[0]" required="required">
+   <option selected="true" disabled="disabled">-CHOOSE-</option>
+  <option value="4" >Excellent</option>
+  <option value="3">Very Good</option>
+  <option value="2">Satisfactory</option>
+  <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+
+    <td>  <b> 2. presents and explains the goals of each lesson. </b>
+    <td> <select name="ts[1]" required>
+   <option selected="true" disabled="disabled">-CHOOSE-</option>
+   <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+     <tr>
+    <td> <b> 3. presents the grading system in the first meeting. </b></td>
+    <td> <select name="ts[2]" required>
+   <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td> <b> 4. is knowledgeable about the subject matter. </b></td>
+ <td> <select name="ts[3]" required> 
+   <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
 
   <tr>
-    <td width="600px"><b>4. The instructor creates an open and fair environment.</b></td>
-    <td><input type="radio" name="qz" value="1" required>Strongly Disagree</td>
-    <td><input type="radio" name="qz" value="2" required>Some What Disagree</td>
-    <td><input type="radio" name="qz" value="3" required>Some What agree</td>
-    <td><input type="radio" name="qz" value="4" required>Strongly agree</td>
-  </tr>
+    <td> <b> 5. uses different teaching styles to make the subject more understandable. </b></td>
+<td> <select name="ts[4]" required>
+   <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td> <b> 6. encourages and/or requires reading of additional publications & books. </b></td>
+    <td> <select name="ts[5]" required>
+   <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
 
   <tr>
-    <td width="600px"><b>5. The instructor presents the subject matter clearly. </b></td>
-    <td><input type="radio" name="qa" value="1" required>Strongly Disagree</td>
-    <td><input type="radio" name="qa" value="2" required>Some What Disagree</td>
-    <td><input type="radio" name="qa" value="3" required>Some What agree</td>
-    <td><input type="radio" name="qa" value="4" required>Strongly agree</td>
-  </tr>
-
-  <tr>
-    <td width="600px"><b>6. The instructor adjusts teaching techniques to meet the needs of students. </b></td>
-    <td><input type="radio" name="qb" value="1" required>Strongly Disagree</td>
-    <td><input type="radio" name="qb" value="2" required>Some What Disagree</td>
-    <td><input type="radio" name="qb" value="3" required>Some What agree</td>
-    <td><input type="radio" name="qb" value="4" required>Strongly agree</td>
-  </tr>
-  <tr>
-    <td width="600px"><b>7. The instructor's presentations and explanations of concepts were clear.</b></td>
-    <td><input type="radio" name="qc" value="1" required>Strongly Disagree</td>
-    <td><input type="radio" name="qc" value="2" required>Some What Disagree</td>
-    <td><input type="radio" name="qc" value="3" required>Some What agree</td>
-    <td><input type="radio" name="qc" value="4" required>Strongly agree</td>
-  </tr>
-  <tr>
-    <td width="600px"><b>8. Assignments and Exams covered important aspects of the course. </b></td>
-    <td><input type="radio" name="qd" value="1" required>Strongly Disagree</td>
-    <td><input type="radio" name="qd" value="2" required>Some What Disagree</td>
-    <td><input type="radio" name="qd" value="3" required>Some What agree</td>
-    <td><input type="radio" name="qd" value="4" required>Strongly agree</td>
-  </tr>
+    <td> <b> 7. uses language and words that can be easily understood. </b></td>
+    <td> <select name="ts[6]" required>
+   <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td> <b> 8. makes sure that all interaction in class is related to the topic. </b></td>
+    <td> <select name="ts[7]" required>
+   <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
   
-    
-</table>
-    <div class="comments">
+  <tr>
+    <td> <b> 9. gives example that can be useful in the real world. </b></td>
+     <td> <select name="ts[8]" required>
+   <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+ 
+      <tr>
+    <td> <font class="font1"> <b> <u> A2. RLE CLINICAL INSTRUCTORS (FOR NURSING STUDENTS ONLY) </u> </b> </font> 
+    </tr>
+    <tr> 
+     <td> <font size="4px"> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> The clinical instructor: </font> </b> </i> </td>
+     </tr>  
+  <tr>
+    <td><b> 1. shows knowledge and mastery in using the equipments, instruments as well as carrying out of all procedures necessary in the clinical area. </b></td>
+     <td> <select name="ci[0]">
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td><b> 2. provides fair student assignments in the area </b></td>
+     <td> <select name="ci[1]">
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+    <tr>
+    <td><b> 3. supervises students in using the equipments and instruments in the area </b></td>
+     <td> <select name="ci[2]">
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td><b> 4. make sure that students are ethical, moral, spiritual and are able to respect individual differences in the area. </b></td>
+     <td> <select name="ci[3]">
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+    <tr>
+    <td><b> 5. gives students not less that three quizzes. </b></td>
+     <td> <select name="ci[4]">
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td><b> 6. conducts class in english. </b></td>
+     <td> <select name="ci[5]">
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+    <tr>
+    <td><b> 7. provides post RLE conferences. </b></td>
+     <td> <select name="ci[6]">
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+      <tr>
+    <td> <font class="font1"> <b> <u> B. EVALUATING STUDENTS </u> </b> </font> 
+    </tr>
+    <tr> 
+     <td> <font size="4px"> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> The instructor: </font> </b> </i> </td>
+     </tr>  
+  <tr>
+    <td><b> 1. gives quizzes and exams that are within the lessons taken. </b></td>
+     <td> <select name="es[0]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td><b> 2. is fair in rating the students, giving reward and sanctions. </b></td>
+     <td> <select name="es[1]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+  <tr>
+    <td><b> 3. checks and returns the quizzes, test papers and requirements on time. </b></td>
+     <td> <select name="es[2]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td width="700px"><b> 4. completes and discusses evaluation of student's performance. </b></td>
+     <td> <select name="es[3]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+  <tr>
+    <td width="700px"><b> 5. opens more chances for further enhancement through oral recitations. projects, specials reports and assignments. </b></td>
+     <td> <select name="es[4]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+      <tr>
+    <td> <font class="font1"> <b> <u> C. MANAGEMENT SKILLS </u> </b> </font> 
+    </tr>
+    <tr> 
+     <td> <font size="4px"> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> The instructor: </font> </b> </i> </td>
+     </tr>  
+  <tr>
+    <td width="700px"><b> 1. handles the classroom activities readily and competently. </b></td>
+     <td> <select name="ms[0]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td width="700px"><b> 2. keeps classroom clean and in order. </b></td>
+     <td> <select name="ms[1]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+  <tr>
+    <td width="700px"><b> 3. starts and ends the class on time. </b></td>
+     <td> <select name="ms[2]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td width="700px"><b> 4. starts and ends the class with a prayer. </b></td>
+     <td> <select name="ms[3]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+  <tr>
+    <td width="700px"><b> 5. implements policies on wearing of proper uniform, shoes, ID. </b></td>
+     <td> <select name="ms[4]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td width="700px"><b> 6. enforces policies on attendance, excuse and admission slips. </b></td>
+     <td> <select name="ms[5]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+  <tr>
+    <td width="700px"><b> 7. maintains good behavior/conduct of students in the classroom. </b></td>
+     <td> <select name="ms[6]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td width="700px"><b> 8. reports to class regularly. </b></td>
+     <td> <select name="ms[7]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+      <tr>
+    <td> <font class="font1"> <b> <u> D. INTERPERSONAL RELATIONSHIP & COMMUNICATION SKILLS </u> </b> </font> 
+    </tr>
+    <tr> 
+     <td> <font size="4px"> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> The instructor: </font> </b> </i> </td>
+     </tr>  
+  <tr>
+    <td width="700px"><b> 1. builds professional relationship with us. </b></td>
+     <td> <select name="ir[0]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td width="700px"><b> 2. gives constructive correction without embarrassing us. </b></td>
+     <td> <select name="ir[1]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+  <tr>
+    <td width="700px"><b> 3. is sensitive to the students' needs (ventilation, lighting, academics, counseling, etc.). </b></td>
+     <td> <select name="ir[2]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td width="700px"><b> 4. speaks understandably loudly and clearly. </b></td>
+     <td> <select name="ir[3]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+      <tr>
+    <td> <font class="font1"> <b> <u> E. PERSONAL QUALITIES </u> </b> </font> 
+    </tr>
+    <tr> 
+     <td> <font size="4px"> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> The instructor: </font> </b> </i> </td>
+     </tr>  
+  <tr>
+    <td width="700px"><b> 1. acts decently and is well groomed, tidy. </b></td>
+     <td> <select name="pq[0]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+    <td width="700px"><b> 2. is open minded, artistic and resourceful. </b></td>
+     <td> <select name="pq[1]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+  <tr>
+    <td width="700px"><b> 3. maintains good relationship with the students and creates an atmosphere of common respect to students. </b></td>
+     <td> <select name="pq[2]" required>
+    <option selected="true" disabled="disabled">-CHOOSE-</option>
+    <option value="4" >Excellent</option>
+    <option value="3">Very Good</option>
+    <option value="2">Satisfactory</option>
+    <option value="1">Unsatisfactory</option>
+          </select>
+    </td>
+  </tr>    
+
+        <div class="comments">
 
 <table cellpadding="10">
   <tr>
-      <td width="850px" align="center"><strong> <i> <font size="3"> <b> What are the strengths of your teacher?</font> </i></strong>
+      <td width="850px" align="center"><strong> <i> <font size="4" color="red">  <b> What are the strengths of your teacher?</font> </i></strong>
 <br><br>      <textarea rows="3" cols="37" name="str" minlength="10" placeholder="Leave your comments here.."></textarea>
     </td>
-      <td><strong> <i> <font size="3"> What are the weaknesses of your teacher?</font> </i></strong>
+      <td><strong> <i> <font size="4" color="red"> What are the weaknesses of your teacher?</font> </i></strong>
 <br><br>
     <textarea rows="3" cols="40" name="weak" minlength="10" placeholder="Leave your comments here.."></textarea>
           </td>
         </tr>
         
-      </table>
-     </div>
+</div>
+</table>
+
 
 <!-- get user code ready for submit-->
 <input type="text" hidden value="<?php echo $_SESSION['code'];?>" name="code">

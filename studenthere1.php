@@ -158,7 +158,7 @@ button:hover {
 }
 #backb{
   margin-top: -147px;
-  margin-left: 940px;
+  margin-left: 990px;
   width: 110px;
 }
 
@@ -199,7 +199,10 @@ button:hover {
     <div class="error">
       <?php
       if(isset($_GET['error'])==1){
-      echo '<p>You Have Entered An Invalid Code!<p/>';
+   echo '<script type="text/javascript">
+          alert("You Have Entered An Invalid Code");
+        </script>';
+      // echo '<p>You Have Entered An Invalid Code!<p/>';
       }
       ?>
       </div>

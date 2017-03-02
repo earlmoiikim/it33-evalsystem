@@ -1,12 +1,22 @@
 <html>
 <head>
   <title>List of Teachers</title>
-
+   
+  <script src="js/jquery.js"> </script>
+  
 <style type="text/css">
   .heading{
   width: 100%;
   height: 27%;
   background-color: #2471A3;
+}
+.continer{
+	margin: auto;
+	overflow: 80px;
+	/*border:1px solid;*/
+	width: 100%;
+	max-height: 400px;
+	text-align: center;
 }
 .fes{
   margin-top: -275px;
@@ -87,38 +97,7 @@ font{
   font-size: 20px;
   font-weight: bold;
 }
-.backbutton{
-    background-color: #057ACA;
-    margin-top: 30px;
-    margin-left: 15px;
-    color: white;
-    padding: 13px 15px;
-    border-radius: 4px;
-    height: 55px;
-    width: 120px;
-    font-size: 25px;
-    cursor: pointer;
-    float: left;
-}
-.backbutton:hover {
-    background-color: #129DFE;
-}
-.backbutton1{
-    background-color: #057ACA;
-    margin-top: 30px;
-    margin-left: 720px;
-    color: white;
-    padding: 8px 22px;
-    border-radius: 5px;
-    height: 55px;
-    width: 180px;
-    font-size: 23px;
-    cursor: pointer;
-    float: left;
-}
-.backbutton1:hover {
-    background-color: #129DFE;
-}
+
 .headingteacher{
   font-family: arial;
   font-size: 45px;
@@ -158,6 +137,43 @@ background-color:#1e62d0;
 position:relative;
 top:1px;
 }
+.btn {
+  display: inline-block;
+  *display: inline;
+  /*padding: 4px 12px;*/
+  margin-bottom: 0;
+  *margin-left: .3em;
+  font-size: 12px;
+  line-height: 20px;
+  color: #333333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: blue;
+  *background-color: blue;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  border: 1px solid #cccccc;
+  *border: 0;
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  *zoom: 1;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
 .myButton1 {
 -moz-box-shadow:inset 0px 1px 0px 0px #97c4fe;
 -webkit-box-shadow:inset 0px 1px 0px 0px #97c4fe;
@@ -190,6 +206,56 @@ background-color:#1e62d0;
 position:relative;
 top:1px;
 }
+.search{
+ position: absolute;
+ /*right: 0;*/
+ margin: auto;
+ margin-right: 80px;
+ margin-top: -60px;	
+ width: 100px;
+font-size: 10px;
+}
+.button_footer{
+	margin: auto;
+	margin-top: 10px;
+	text-align: center;
+}
+.btn-size{
+	  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #006dcc;
+  *background-color: #0044cc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	width: 150px;
+	font-size: 20px;
+	font-weight: bold;
+	height:50px;
+	font-family: Comic Sans MS; 
+
+}
+.btn-size:hover{
+  background-color: #129DFE;
+
+}
+input[type=text] {
+    font-size: 15px;
+    width: 400px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-left: 1400px;
+}
 
 </style>
 <center>
@@ -211,48 +277,47 @@ top:1px;
 </head>
 <body style="background:linear-gradient(to bottom right,white,lightblue,white); height:790px">
 
+<div class="search"> Search: <input type="text" id="search" placeholder="Search Here">
+
+</div>
   <div class="headingteacher"> List of Teachers </div>
     <br> <br>
-  <table cellspacing="2" cellpadding="3" align="center" width="1200px" border="3">
-  <tr>
-    <td align="center"><font>Employee ID</td>
-    <td align="center"><font>Name</td>
-    <td align="center"><font>Department</td>
-    <td align="center"><font>Function</td>
+   <div id="result" class="continer">
 
-  </tr>
-  <?php
-include './database/database.php';
-      $sql = "SELECT * FROM teachers";
+   <a href=""></a>
+   </div> 
 
-      $dbh = connect();
-      $sth = $dbh->prepare($sql);
-      $sth->execute();
-
-      $results = $sth->fetchAll(PDO::FETCH_OBJ);
-      ?>
-
-
-      <?php foreach ($results as $g):?>
-
-      
-      <tr>
-        <td align="center"><?php echo  $g->emp_id; ?></td>
-        <td align="center"><?php echo  $g->name; ?></td>
-        <td align="center"><?php echo  $g->department; ?></td>
-        <td align="center">
-          <a href="functions/edit.php?edit=<?php echo  $g->id; ?>"><button class="mybutton"> Edit </button></a>
-          <a href="functions/delete.php?id=<?php echo $g->id; ?>"><button class="mybutton1">Delete </button></a>
-        
-        </td>
-
-      </tr>
-      <?php endforeach; ?>
-  
-</table>    
-  <div class="back">
- <a href="addnewteacher.php"> <button class="backbutton1">Add Teacher </button></a>
- <a href="adminrecord.php"> <button class="backbutton"> BACK </button> </a> 
+     <div class="button_footer">
+ <a href="addnewteacher.php"><button class="btn btn-size">Add Teacher </button></a>
+ <a href="adminrecord.php"> <button class="btn btn-size"> BACK </button> </a> 
  </div>
+
 </body>
 </html>
+
+
+<script>
+     $('#result').load('teacherslist.php');
+     $(document).ready(function(){
+
+     	$('#search').keyup(function(){
+     		var txt = $(this).val();
+     		if(txt != ''){
+     			$.ajax({
+     				url:"process.php",method:"post",
+     				data:{searchteacher:txt},
+     				dataType:"text",
+     				success:function(data){
+     					$('#result').html(data);
+     				}
+     			})
+     		}
+     		else{
+     			$('#result').load('teacherslist.php');
+
+     		}
+     	})
+     	
+     })
+
+  </script>
