@@ -1,0 +1,27 @@
+/*for header*/
+.box{
+  position: relative;
+  margin: 0 auto;
+  height: 150px;
+  width: 150px;
+}
+.font{
+  font-family: impact;
+  font-size: 50px;
+}
+.font2{
+  font-family: monospace;
+  font-size: 30px;
+}
+/*for header*/
+.bg-white{
+  padding-top: 20px;
+  height: 450px;
+  background-color: white;
+}
+.bgwhite{
+  background-color: white;
+}
+.table tr th{
+  text-align: center;
+}

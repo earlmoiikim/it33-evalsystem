@@ -1,88 +1,136 @@
-<?php 
+<?php
+include 'functions/function.php';
 
-include './database/database.php';
-  $dbs = connect();
-  $query = $dbs->prepare("SELECT * from subject 
-  	inner join teachers ON subject.teacher = teachers.name");
-  $query->execute();
-  $results = $query->fetchAll(PDO::FETCH_OBJ);
+$results = getoverall();
+
+if(isset($_POST['searchname'])){
+  $results = searchbyname($_POST['searchname']);
+}
+if(isset($_GET['dept'])){
+  if($_GET['dept'] == "ict"){
+    $dept = "ICT";
+    $results = searchbydept($dept);
+  }
+  if($_GET['dept'] == "eng"){
+    $results = searchbydept("ENGINEERING");
+  }
+  if($_GET['dept'] == "nur"){
+    $dept = "NURSING";
+    $results = searchbydept($dept);
+  }
+  if($_GET['dept'] == "chm"){
+    $results = searchbydept("CHM");
+  }
+  if($_GET['dept'] == "cri"){
+    $results = searchbydept("CRIMINOLOGY");
+  }
+  if($_GET['dept'] == "ba"){
+    $results = searchbydept("B.A");
+  }
+  if($_GET['dept'] == "edu"){
+    $results = searchbydept("EDUCATION");
+  }
+}
 
  ?>
 
 <html>
 <head>
 <title> VIEW </title>
-
-<style type="text/css">
-	.heading{
-	width: 100%;
-	height: 27%;
-	background-color: #2471A3;
-}
-.fes{
-	margin-top: -275px;
-	margin-left: 180px;
-	text-shadow: 3px 4px white;
-	font-family: arial;
-	color: #062F63;
-	font-weight: 800;
-	font-size: 60px;
-}
-.jp{
-	margin-top: -170px;
-	margin-left: 130px;
-	text-shadow: 5px 7px #030301;
-	font-family: arial;
-	color: #FAFF05;
-	font-weight: 700;
-	font-size: 60px;
-}
-
-#image{
-	margin-left: -950px;
-	margin-top: -220px;
-}
-table{
-	font-family: arial;
-	text-align: center;
-    background-color: #F2F3F4;
-
-}
-</style>
-<center>
-   <div class="heading">
-        <h1 style="margin-top: 30px;"> 
-        </h1>
-   </div>
-     <img id="image" src="./images/logo.png" width="230px" height="230px">
-  <div class="fes">
-     <p align="center"> Faculty Evaluation System </p>
-      <br> 
-  </div>
-  <div class="jp">
-     <p align="center"> -Office of Guidance- </p>
-      <br> 
-  </div>
-  
-</center>
+<!-- Bootstrap Core CSS -->
+<link href="style/bootstrap.min.css" rel="stylesheet">
+<!-- Icons -->
+<link rel="stylesheet" href="style/css/font-awesome.min.css" type="text/css">
+<!-- custom css -->
+<link href="style/master.css" rel="stylesheet">
 </head>
-<body style="background:linear-gradient(to bottom right,white,lightblue,white); height:790px">
+<body style="background:linear-gradient(to bottom right,white,lightblue,white); height:100%">
 
-<table border="1" style= "border-collapse: collapse" cellspacing="10" cellpadding="10" align="center">
-	<tr>
-		<th>Name of Faculty</th>
-		<th>Mean Rating</th>
-		<th>Descriptive Equivalent</th>
-	</tr>
-	<?php foreach($results as $g): ?>
-	<tr>
-		<td><?php echo $g->teacher ?></td>
-		<td><?php echo $g->grade ?></td>
-		<td><?php echo $g->description ?></td>
-	</tr>
-	<?php endforeach; ?>
-</table>
+  <header style="margin-bottom: 20px;">
+    <div class="container-fluid bg-primary">
 
+      <div class="row">
+        <div class="container" style="padding: 20px 0px;">
+
+          <div class="col-md-3">
+            <div class="box">
+                <img class="img-responsive" src="./images/logo.png">
+            </div>
+          </div>
+
+          <div class="col-md-6 text-center">
+              <h1 class="font"> Faculty Evaluation System </h1>
+              <h1 class="font2"> - Office of Guidance - </h1>
+          </div>
+
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+<div class="container bg-white">
+  <div class="row">
+    <div class="col-md-2">
+      <a href="adminrecord.php"><button class="btn btn-danger" type="button" name="button">
+        <i class="fa fa-arrow-left"></i> BACK</button>
+    </a>
+    </div>
+    <div class="col-md-7">
+      <div class="form-inline">
+        <label for="">Search by dept : </label>
+        <a href="views.php?dept=ict" class="btn btn-default">ICT</a>
+        <a href="views.php?dept=eng" class="btn btn-default">ENG</a>
+        <a href="views.php?dept=nur" class="btn btn-default">NUR</a>
+        <a href="views.php?dept=chm" class="btn btn-default">CHM</a>
+        <a href="views.php?dept=cri" class="btn btn-default">CRI</a>
+        <a href="views.php?dept=ba" class="btn btn-default">BA</a>
+        <a href="views.php?dept=edu" class="btn btn-default">EDU</a>
+      </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+          <form class="input-group" action="#" method="post">
+            <input class="form-control" type="text" name="searchname" placeholder="Search by name">
+            <span class="input-group-addon"> <i class="fa fa-search"></i>
+            </span>
+          </form>
+        </div>
+    </div>
+  </div>
+
+  <div class="row" style="height: 400px;">
+    <table class="table table-responsive table-striped table-bordered text" align="center">
+    	<tr>
+    		<th>Name of Faculty</th>
+    		<th>Mean Rating</th>
+    		<th>Descriptive Equivalent</th>
+    		<th>Option</th>
+    	</tr>
+    	<?php foreach($results as $g): ?>
+        <tr>
+          <td><?php echo $g->teacher ?></td>
+          <td><?php echo $g->grade ?></td>
+          <td><?php echo $g->description ?></td>
+          <td><button type="button" class="btn btn-primary">See details</button></td>
+        </tr>
+      <?php endforeach; ?>
+    </table>
+  </div>
+
+</div>
 
 </body>
 </html>
+
+<style media="screen" type="text/css">
+
+  .text tr th{
+    text-align: center;
+  }
+  .text tr td{
+    text-align: center;
+  }
+
+</style>

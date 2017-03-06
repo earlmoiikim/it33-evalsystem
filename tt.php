@@ -1,6 +1,7 @@
 <?php
 session_start();
 include './database/database.php';
+include 'ns.php';
 $test='hidden';
 
 $sql = "SELECT * FROM teachers";
@@ -12,6 +13,12 @@ $sql = "SELECT * FROM teachers";
 if(isset($_GET['success'])){
   $test='';
 }
+
+$section = '';
+if(isset($student) && $student == "nursing"){
+  $section = nursing();
+}
+
 ?>
 
 
@@ -19,7 +26,7 @@ if(isset($_GET['success'])){
 <head>
 	<title>Add New Teacher</title>
 
-<script src="js/jquery.js"></script> 
+<script src="js/jquery.js"></script>
 
 <style type="text/css">
 	.heading{
@@ -51,7 +58,7 @@ if(isset($_GET['success'])){
 	margin-top: -220px;
 }
 .button {
-    background-color: #064F7C; 
+    background-color: #064F7C;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -90,7 +97,7 @@ select {
 }
 input[type=submit] {
      background-color: #057ACA;
-    margin-left: 730px; 
+    margin-left: 730px;
     margin-top: -5px;
     color: white;
     padding: 10px 15px;
@@ -162,7 +169,7 @@ table{
   border: 3px blue;
   border-style: solid;
 }
-.okbutton{  
+.okbutton{
   margin-top: -5px;
   width: 150px;
   height: 80px;
@@ -185,7 +192,7 @@ table{
   margin-top: 10px;
   font-family: arial;
   font-size: 20px;
-  font-weight: 40px; 
+  font-weight: 40px;
 }
 .font1{
   color: #E30826;
@@ -195,19 +202,19 @@ table{
 </style>
 <center>
    <div class="heading">
-        <h1 style="margin-top: 30px;"> 
+        <h1 style="margin-top: 30px;">
         </h1>
    </div>
      <img id="image" src="./images/logo.png" width="230px" height="230px">
   <div class="fes">
      <p align="center"> Faculty Evaluation System </p>
-      <br> 
+      <br>
   </div>
   <div class="jp">
      <p align="center"> -Office of Guidance- </p>
-      <br> 
+      <br>
   </div>
-  
+
 </center>
 </head>
 <body style="background:linear-gradient(to bottom right,white,lightblue,white); height:790px">
@@ -222,21 +229,21 @@ table{
 
 <select style="margin-top: -20px;" name="teach">
 <?php foreach ($res as $g):?>
-  <option value="<?php echo $g->name; ?>"><?php echo $g->name; ?> </option>  
-<?php endforeach; ?>  
+  <option value="<?php echo $g->name; ?>"><?php echo $g->name; ?> </option>
+<?php endforeach; ?>
 </select>
 
 </div>
-<!-- 
+<!--
 <input type="text"  name="teach" value="<?php //echo $g->id; ?>"> -->
 <div class="divTable">
 <table align="center" cellpadding="3" cellspacing="3" width="500px">
    <tr>
-    <td> <font class="font1"> <b> <u> A1. TEACHING SKILLS </u> </b> </font> 
+    <td> <font class="font1"> <b> <u> A1. TEACHING SKILLS </u> </b> </font>
     </tr>
-    <tr> 
+    <tr>
      <td> <font size="4px"> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> The instructor: </font> </b> </i> </td>
-     </tr>  
+     </tr>
   <tr>
     <td><b> 1. discusses the course outline, objectives, and expectations. </b></td>
     <td> <select name="ts[0]" required="required">
@@ -257,7 +264,7 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
      <tr>
     <td> <b> 3. presents the grading system in the first meeting. </b></td>
@@ -270,7 +277,7 @@ table{
           </select>
     </td>
     <td> <b> 4. is knowledgeable about the subject matter. </b></td>
- <td> <select name="ts[3]" required> 
+ <td> <select name="ts[3]" required>
    <option selected="true" disabled="disabled">-CHOOSE-</option>
     <option value="4" >Excellent</option>
     <option value="3">Very Good</option>
@@ -278,7 +285,7 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
   <tr>
     <td> <b> 5. uses different teaching styles to make the subject more understandable. </b></td>
@@ -299,7 +306,7 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
   <tr>
     <td> <b> 7. uses language and words that can be easily understood. </b></td>
@@ -320,8 +327,8 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
-  
+  </tr>
+
   <tr>
     <td> <b> 9. gives example that can be useful in the real world. </b></td>
      <td> <select name="ts[8]" required>
@@ -332,95 +339,16 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
- 
-      <tr>
-    <td> <font class="font1"> <b> <u> A2. RLE CLINICAL INSTRUCTORS (FOR NURSING STUDENTS ONLY) </u> </b> </font> 
-    </tr>
-    <tr> 
-     <td> <font size="4px"> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> The clinical instructor: </font> </b> </i> </td>
-     </tr>  
+  </tr>
+
+  <?php echo $section; ?>
+
   <tr>
-    <td><b> 1. shows knowledge and mastery in using the equipments, instruments as well as carrying out of all procedures necessary in the clinical area. </b></td>
-     <td> <select name="ci[0]">
-    <option selected="true" disabled="disabled">-CHOOSE-</option>
-    <option value="4" >Excellent</option>
-    <option value="3">Very Good</option>
-    <option value="2">Satisfactory</option>
-    <option value="1">Unsatisfactory</option>
-          </select>
-    </td>
-    <td><b> 2. provides fair student assignments in the area </b></td>
-     <td> <select name="ci[1]">
-    <option selected="true" disabled="disabled">-CHOOSE-</option>
-    <option value="4" >Excellent</option>
-    <option value="3">Very Good</option>
-    <option value="2">Satisfactory</option>
-    <option value="1">Unsatisfactory</option>
-          </select>
-    </td>
-  </tr>    
-
-    <tr>
-    <td><b> 3. supervises students in using the equipments and instruments in the area </b></td>
-     <td> <select name="ci[2]">
-    <option selected="true" disabled="disabled">-CHOOSE-</option>
-    <option value="4" >Excellent</option>
-    <option value="3">Very Good</option>
-    <option value="2">Satisfactory</option>
-    <option value="1">Unsatisfactory</option>
-          </select>
-    </td>
-    <td><b> 4. make sure that students are ethical, moral, spiritual and are able to respect individual differences in the area. </b></td>
-     <td> <select name="ci[3]">
-    <option selected="true" disabled="disabled">-CHOOSE-</option>
-    <option value="4" >Excellent</option>
-    <option value="3">Very Good</option>
-    <option value="2">Satisfactory</option>
-    <option value="1">Unsatisfactory</option>
-          </select>
-    </td>
-  </tr>    
-
-    <tr>
-    <td><b> 5. gives students not less that three quizzes. </b></td>
-     <td> <select name="ci[4]">
-    <option selected="true" disabled="disabled">-CHOOSE-</option>
-    <option value="4" >Excellent</option>
-    <option value="3">Very Good</option>
-    <option value="2">Satisfactory</option>
-    <option value="1">Unsatisfactory</option>
-          </select>
-    </td>
-    <td><b> 6. conducts class in english. </b></td>
-     <td> <select name="ci[5]">
-    <option selected="true" disabled="disabled">-CHOOSE-</option>
-    <option value="4" >Excellent</option>
-    <option value="3">Very Good</option>
-    <option value="2">Satisfactory</option>
-    <option value="1">Unsatisfactory</option>
-          </select>
-    </td>
-  </tr>    
-
-    <tr>
-    <td><b> 7. provides post RLE conferences. </b></td>
-     <td> <select name="ci[6]">
-    <option selected="true" disabled="disabled">-CHOOSE-</option>
-    <option value="4" >Excellent</option>
-    <option value="3">Very Good</option>
-    <option value="2">Satisfactory</option>
-    <option value="1">Unsatisfactory</option>
-          </select>
-    </td>
-  </tr>    
-
-      <tr>
-    <td> <font class="font1"> <b> <u> B. EVALUATING STUDENTS </u> </b> </font> 
+    <td> <font class="font1"> <b> <u> B. EVALUATING STUDENTS </u> </b> </font>
     </tr>
-    <tr> 
+    <tr>
      <td> <font size="4px"> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> The instructor: </font> </b> </i> </td>
-     </tr>  
+     </tr>
   <tr>
     <td><b> 1. gives quizzes and exams that are within the lessons taken. </b></td>
      <td> <select name="es[0]" required>
@@ -440,7 +368,7 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
   <tr>
     <td><b> 3. checks and returns the quizzes, test papers and requirements on time. </b></td>
@@ -461,7 +389,7 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
   <tr>
     <td width="700px"><b> 5. opens more chances for further enhancement through oral recitations. projects, specials reports and assignments. </b></td>
@@ -473,14 +401,14 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
       <tr>
-    <td> <font class="font1"> <b> <u> C. MANAGEMENT SKILLS </u> </b> </font> 
+    <td> <font class="font1"> <b> <u> C. MANAGEMENT SKILLS </u> </b> </font>
     </tr>
-    <tr> 
+    <tr>
      <td> <font size="4px"> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> The instructor: </font> </b> </i> </td>
-     </tr>  
+     </tr>
   <tr>
     <td width="700px"><b> 1. handles the classroom activities readily and competently. </b></td>
      <td> <select name="ms[0]" required>
@@ -500,7 +428,7 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
   <tr>
     <td width="700px"><b> 3. starts and ends the class on time. </b></td>
@@ -521,7 +449,7 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
   <tr>
     <td width="700px"><b> 5. implements policies on wearing of proper uniform, shoes, ID. </b></td>
@@ -542,7 +470,7 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
   <tr>
     <td width="700px"><b> 7. maintains good behavior/conduct of students in the classroom. </b></td>
@@ -563,14 +491,14 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
       <tr>
-    <td> <font class="font1"> <b> <u> D. INTERPERSONAL RELATIONSHIP & COMMUNICATION SKILLS </u> </b> </font> 
+    <td> <font class="font1"> <b> <u> D. INTERPERSONAL RELATIONSHIP & COMMUNICATION SKILLS </u> </b> </font>
     </tr>
-    <tr> 
+    <tr>
      <td> <font size="4px"> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> The instructor: </font> </b> </i> </td>
-     </tr>  
+     </tr>
   <tr>
     <td width="700px"><b> 1. builds professional relationship with us. </b></td>
      <td> <select name="ir[0]" required>
@@ -590,7 +518,7 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
   <tr>
     <td width="700px"><b> 3. is sensitive to the students' needs (ventilation, lighting, academics, counseling, etc.). </b></td>
@@ -611,14 +539,14 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
       <tr>
-    <td> <font class="font1"> <b> <u> E. PERSONAL QUALITIES </u> </b> </font> 
+    <td> <font class="font1"> <b> <u> E. PERSONAL QUALITIES </u> </b> </font>
     </tr>
-    <tr> 
+    <tr>
      <td> <font size="4px"> <b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> The instructor: </font> </b> </i> </td>
-     </tr>  
+     </tr>
   <tr>
     <td width="700px"><b> 1. acts decently and is well groomed, tidy. </b></td>
      <td> <select name="pq[0]" required>
@@ -638,7 +566,7 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
   <tr>
     <td width="700px"><b> 3. maintains good relationship with the students and creates an atmosphere of common respect to students. </b></td>
@@ -650,7 +578,7 @@ table{
     <option value="1">Unsatisfactory</option>
           </select>
     </td>
-  </tr>    
+  </tr>
 
         <div class="comments">
 
@@ -664,7 +592,7 @@ table{
     <textarea rows="3" cols="40" name="weak" minlength="10" placeholder="Leave your comments here.."></textarea>
           </td>
         </tr>
-        
+
 </div>
 </table>
 
@@ -683,7 +611,7 @@ table{
 </center>
 
 <div id="save" visibility: <?php echo $test;?>>
-      
+
     <div id="inside"><p style="font-size: 30px">Your evaluation has been submitted. <br><br> <font face="comic sans ms"> Thank You for your time! </p>
     <a href="tt.php"><button class="okbutton" autofocus="autofocus">OKAY!</button></a>
     </div>
@@ -691,12 +619,11 @@ table{
 </body>
 </html>
 
-<?php 
+<?php
 //from evalprocess.php
 if(isset($_GET['error']) && $_GET['error'] == 1){
   echo '<script type="text/javascript">
           alert("You have already evaluated this teacher");
         </script>';
 }
-
  ?>
