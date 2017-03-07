@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
 
   $db = connect();
     $query = $db->prepare("INSERT INTO teachers SET emp_id = '$eid', name = '$tname', department = '$dep'");
-      
+
     if($query->execute()){
         header('Location: http://localhost/IT33/addnewteacher.php?success');
 
@@ -36,58 +36,82 @@ if(isset($_GET['success'])){
 <html>
 <head>
 	<title>Add New Teacher</title>
+  <!-- Bootstrap Core CSS -->
+  <link href="style/bootstrap.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="style/css/font-awesome.min.css" type="text/css">
+  <!-- custom css -->
+  <link href="style/master.css" rel="stylesheet">
 
+</head>
+<body style="background:linear-gradient(to bottom right,white,lightblue,white);">
+
+  <header style="margin-bottom: 20px;">
+    <div class="container-fluid bg-primary">
+
+      <div class="row">
+        <div class="container" style="padding: 20px 0px;">
+
+          <div class="col-md-3">
+            <div class="box">
+                <img class="img-responsive" src="./images/logo.png">
+            </div>
+          </div>
+
+          <div class="col-md-6 text-center">
+              <h1 class="font"> Faculty Evaluation System </h1>
+              <h1 class="font2"> - Office of Guidance - </h1>
+          </div>
+
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 bgwhite" style="padding: 20px 30px;">
+        <form class="form-group" action="#" method="POST">
+        <h3 align="center">TEACHER'S INFORMATION</h3>
+        <label for=""> EMPLOYEE ID : </label>
+        <input type="text" name="empid" size="30" class="form-control"
+        style="text-transform:uppercase;" maxlength="7" minlength="7" height= "100" title="Sample format: SRT-102" required><br>
+        <label for=""> EMPLOYEE NAME : </label>
+        <input type="text" name="name" required class="form-control"
+        style="text-transform:uppercase;" placeholder="first name - last name"> <br>
+          <label for="">DEPARTMENT : </label>
+          <select name="dept" required class="form-control">
+          <option>--Select--</option>
+          <option value="ICT"> ICT </option>
+          <option value="ENGINEERING"> ENGINEERING </option>
+          <option value="NURSING"> NURSING </option>
+          <option value="CRIMINOLOGY"> CRIMINOLOGY </option>
+          <option value="EDUCATION"> EDUCATION </option>
+          <option value="BA"> B.A </option>
+          <option value="CHM"> CHM </option>
+          </select>
+          <div class="pull-right" style="margin-top: 10px;">
+            <input type="submit" value="SUBMIT" name="submit" class="btn btn-primary">
+            <a href="chereg.php"> <input type="button" value="CANCEL" class="btn btn-danger"></a>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+
+  <div id="save" visibility: <?php echo $test;?>>
+    <div id="inside"><p style="font-size: 40px">Your data is successfully saved!</p>
+    <a href="chereg.php"><button id="okbutton" autofocus="autofocus">OKAY!</button></a>
+    </div>
+  </div>
+
+</body>
+</html>
 <style type="text/css">
-	.heading{
-	width: 100%;
-	height: 27%;
-	background-color: #2471A3;
-}
-.fes{
-	margin-top: -275px;
-	margin-left: 180px;
-	text-shadow: 3px 4px white;
-	font-family: arial;
-	color: #062F63;
-	font-weight: 800;
-	font-size: 60px;
-}
-.jp{
-	margin-top: -170px;
-	margin-left: 130px;
-	text-shadow: 5px 7px #030301;
-	font-family: arial;
-	color: #FAFF05;
-	font-weight: 700;
-	font-size: 60px;
-}
-
-#image{
-	margin-left: -950px;
-	margin-top: -220px;
-}
-.back{
-  border: 1px solid black;
-  width: 1000px;
-  height: 500px;
-  margin-top: -70px;
-  margin-left: 370px;
-    box-shadow: 0px 8px 20px 20px rgba(255,255,255,0.5);
-  background-color: #1F618D;
-  font-size: 33px;
-  font-family: Arial;
-  text-align: center;
-  color: white;
-}
-input[type=text], select {
-    font-size: 15px;
-    width: 500px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-}
 
 #save{
   position: absolute;
@@ -118,7 +142,7 @@ input[type=text], select {
   border: 3px blue;
   border-style: solid;
 }
-#okbutton{  
+#okbutton{
   margin-top: 40px;
   width: 150px;
   height: 80px;
@@ -129,100 +153,5 @@ input[type=text], select {
   font-weight: bolder;
   border-style: solid;
 }
-div.sclass{
-  position: absolute;
-  left: 0;
-  right: 0;
-  text-align: center;
-  margin: auto;
-  margin-top: 200px;
-  font-weight: bold;
-  font-size: 20px;
-  color: yellow;
-}
-.xx{
-   color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #006dcc;
-  *background-color: #0044cc;
-  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
-  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
-  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
-  background-repeat: repeat-x;
-  border-color: #0044cc #0044cc #002a80;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-  width: 200px;
-  border-radius: 5px;
-  height: 50px;
-  font-size:25px;
-  font-family: Comic San MS;
-  background-color: #6666ff;
-  margin-top: 20px;
-  margin-left: -30px;
-  font-weight: bold;
-}
-.xx:hover{
-  background-color: #129DFE;
 
-}
-
-p.capitalize {
-    text-transform: capitalize;
-}
 </style>
-<center>
-   <div class="heading">
-        <h1 style="margin-top: 30px;"> 
-        </h1>
-   </div>
-     <img id="image" src="./images/logo.png" width="230px" height="230px">
-  <div class="fes">
-     <p align="center"> Faculty Evaluation System </p>
-      <br> 
-  </div>
-  <div class="jp">
-     <p align="center"> -Office of Guidance- </p>
-      <br> 
-  </div>
-  
-</center>
-</head>
-<body style="background:linear-gradient(to bottom right,white,lightblue,white); height:790px">
-
-<div class="back">
-<div class="sclass">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $msg; ?> </div>
-<form action="#" method="POST">
-<pre>
-<p align="center">TEACHER'S INFORMATION</p>
-  EMPLOYEE ID     : <input type="text" name="empid" size="30" style="text-transform:uppercase;" maxlength="7" minlength="7" height= "100" title="Sample format: SRT-102" required><br>
-  EMPLOYEE NAME    : <input type="text" name="name" required style="text-transform:uppercase;" placeholder="first name - last name"> <br> 
-  DEPARTMENT      : <select name="dept" required> 
-  <option>--Select--</option>
-  <option value="ICT"> ICT </option>
-  <option value="ENGINEERING"> ENGINEERING </option>
-  <option value="NURSING"> NURSING </option>
-  <option value="CRIMINOLOGY"> CRIMINOLOGY </option>
-  <option value="EDUCATION"> EDUCATION </option>
-  <option value="BA"> B.A </option>
-  <option value="CHM"> CHM </option>
-</select>
-         <input type="submit" value="SUBMIT" name="submit" class="xx"> <a href="chereg.php"> <input type="button" value="CANCEL" class="xx"></a> 
-
-  </pre>
-  </form>
-</div>  
-
-<div id="save" visibility: <?php echo $test;?>>
-      
-    <div id="inside"><p style="font-size: 40px">Your data is successfully saved!</p>
-    <a href="chereg.php"><button id="okbutton" autofocus="autofocus">OKAY!</button></a>
-    </div>
-
-	
-
-</body>
-</html>

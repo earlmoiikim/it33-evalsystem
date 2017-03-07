@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
 		$sex = $_POST['sex'];
 		$Department = $_POST['Department'];
 
-		
+
 		if(Eval4Department_exists($time,$Eval3,$Eval4,$Department)) {
 			header("Location:../admin/schedule.php#popup5");
 
@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
 		}
 		else
 		{
-		$query = $db->prepare("INSERT INTO registration SET 
+		$query = $db->prepare("INSERT INTO registration SET
 							TeahersName = :TeahersName,
 							Eval1 = :Eval1,
 			 				Eval2 = :Eval2,
@@ -41,8 +41,8 @@ if(isset($_POST['submit'])){
 						 	':Department' => $Department];
 
 
-		
-	
+
+
 			if($query->execute($execute_query)){
 					header('Location:../admin/schedule.php');
 				}
@@ -52,17 +52,11 @@ if(isset($_POST['submit'])){
 
 		}
 
-
-
-		
-
-
-
 }
 	else{
 		header("Location:../admin/table.php?error8=1");
-	}		
+	}
 
-		
+
 
  ?>

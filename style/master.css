@@ -25,3 +25,16 @@
 .table tr th{
   text-align: center;
 }
+.box-table{
+  position: relative;
+  overflow: auto;
+}
+.pad{
+  padding: 0px 30px 0px 30px;
+}
+.margin{
+  margin: 10px auto;
+}
+.margin table{
+  margin: 0px auto;
+}

@@ -1,7 +1,8 @@
 <?php
 include 'database/database.php';
  $dbh = connect();
-   if(isset($_POST['searchteacher'])){
+
+if(isset($_POST['searchteacher'])){
 $data = $_POST['searchteacher'];
 $output = '';
       $sql = "SELECT * FROM teachers  WHERE emp_id LIKE '%$data%' OR name LIKE '%$data%' ";
@@ -20,10 +21,7 @@ $output = '';
   </tr>
 ';
 	foreach ($results as $g) {
-
       	$output .= '
-
-
       <tr>
         <td align="center">'.$g->emp_id.'</td>
         <td align="center">' .$g->name.'</td>
@@ -31,12 +29,8 @@ $output = '';
         <td align="center">
         <a href="functions/edit.php?edit='.$g->id.'"><button class="btn btn-primary"><i class="fa fa-edit"></i> Edit </button></a>
         <a href="functions/delete.php?id='.$g->id.'"><button class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </button></a>
-
         </td>
-
       </tr>
-
-
       	';
       	}
       	 $output.=' </table> ';
@@ -45,7 +39,9 @@ $output = '';
       else{
       	echo "<h1 align='center'>No Data found</h1>";
       }
-
    }
 
+if(isset($_POST['details'])){
+  
+}
 ?>

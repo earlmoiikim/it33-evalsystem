@@ -76,13 +76,12 @@ else
 
 <div class="container">
   <div class="">
-  <div class="sclass">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $msg; ?> </div>
+  <div class="sclass"> <?php echo $msg; ?> </div>
     <form action="edit.php" method="POST">
       <input type="hidden" value="<?php echo $id ?>" name= 'id'>
-
-      <h2 align="center" style="margin: 0px 0px 20px 0px">TEACHER'S INFORMATION</h2>
       <div class="col-md-4"></div>
-      <div class="col-md-4">
+      <div class="col-md-4 bgwhite" style="padding: 20px 30px 20px 30px">
+        <h3 align="center" style="margin: 0px 0px 20px 0px">TEACHER'S INFORMATION</h3>
         <div class="form-group">
           <label>Employee Number : </label>
           <input type="text" name="empnum" value="<?php echo $emp_id ?>"

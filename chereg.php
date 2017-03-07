@@ -10,7 +10,7 @@
 </head>
 
 <body style="background:linear-gradient(to bottom right,white,lightblue,white);">
-  <header style="margin-bottom: 20px;">
+  <header>
     <div class="container-fluid bg-primary">
 
       <div class="row">
@@ -34,7 +34,7 @@
     </div>
   </header>
 
-  <div class="container">
+  <div class="container bgwhite" style="padding-bottom: 20px;">
     <div class="row">
       <div class="col-md-4">
          <div class="headingteacher"><h2> List of Teachers</h2> </div>
@@ -49,13 +49,15 @@
           </div>
         </div>
     </div>
+  </div>
 
+  <div class="row" style="height: 350px; overflow: auto;">
+    <div id="result" class="box-table">
 
-   <div id="result" class="continer">
-   <a href=""></a>
-   </div>
+    </div>
+  </div>
 
-   <div class="row">
+   <div class="row" style="margin-top: 10px;">
      <div class="col-md-4"></div>
      <div class="col-md-4 text-center">
        <a href="addnewteacher.php"><button class="btn btn-primary">

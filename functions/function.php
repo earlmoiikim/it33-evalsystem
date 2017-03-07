@@ -109,6 +109,18 @@ function description($grade){
   return $description;
 }
 
+function rating($grade, $numberOfStudents){
+  $rating = $grade / $numberOfStudents;
+  $rating = number_format($rating, 1, '.', ',');
+  return $rating;
+}
+
+function sectionrating($grade, $numberOfStudents, $items){
+  $rating = ($grade / $items) / $numberOfStudents;
+  $rating = number_format($rating, 1, '.', ',');
+  return $rating;
+}
+
 function getscores($teach){
   $db = connect();
   $sql1 = "SELECT * FROM scores WHERE teach = '$teach'";
@@ -146,5 +158,16 @@ function searchbydept($dept){
     $query->execute();
   return $results = $query->fetchAll(PDO::FETCH_OBJ);
 }
+
+function scoresbyteacher($teach){
+  $db = connect();
+  $query = $db->prepare("SELECT * From overall
+    INNER JOIN teachers ON overall.teacher = teachers.name
+    INNER JOIN scores ON teachers.name = scores.teach
+    WHERE teacher = '$teach'");
+  $query->execute();
+  return $results = $query->fetch(PDO::FETCH_OBJ);
+}
+
 
 ?>
