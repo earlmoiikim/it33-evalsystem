@@ -164,10 +164,17 @@ function scoresbyteacher($teach){
   $query = $db->prepare("SELECT * From overall
     INNER JOIN teachers ON overall.teacher = teachers.name
     INNER JOIN scores ON teachers.name = scores.teach
-    WHERE teacher = '$teach'");
+    WHERE overall.teacher = '$teach'");
   $query->execute();
   return $results = $query->fetch(PDO::FETCH_OBJ);
 }
 
+function userbycode($code){
+  $db = connect();
+  $query = $db->prepare("SELECT * FROM users
+  WHERE code = '$code'");
+  $query->execute();
+  return $results = $query->fetch(PDO::FETCH_OBJ);
+}
 
 ?>

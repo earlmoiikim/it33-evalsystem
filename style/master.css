@@ -13,6 +13,9 @@
   font-family: monospace;
   font-size: 30px;
 }
+.font3{
+  font-family: monospace;
+}
 /*for header*/
 .bg-white{
   padding-top: 20px;
@@ -37,4 +40,20 @@
 }
 .margin table{
   margin: 0px auto;
+}
+.padvertical{
+  padding: 30px 0px 30px 0px;
+}
+.padside{
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.paddings{
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+.tables td{
+  text-align: left;
 }

@@ -1,85 +1,63 @@
 <html>
 <head>
 	<title>SJPIICD Faculty Evaluation System</title>
+	<!-- Bootstrap Core CSS -->
+	<link href="style/bootstrap.min.css" rel="stylesheet">
+	<!-- Icons -->
+	<link rel="stylesheet" href="style/css/font-awesome.min.css" type="text/css">
+	<!-- custom css -->
+	<link href="style/master.css" rel="stylesheet">
 
-<style type="text/css">
-	.heading{
-	width: 100%;
-	height: 27%;
-	background-color: #2471A3;
-}
-.fes{
-	margin-top: -275px;
-	margin-left: 180px;
-	text-shadow: 3px 4px white;
-	font-family: arial;
-	color: #062F63;
-	font-weight: 800;
-	font-size: 60px;
-}
-.jp{
-	margin-top: -170px;
-	margin-left: 130px;
-	text-shadow: 5px 7px #030301;
-	font-family: arial;
-	color: #FAFF05;
-	font-weight: 700;
-	font-size: 60px;
-}
-
-#image{
-	margin-left: -950px;
-	margin-top: -220px;
-}
-.button {
-    background-color: #064F7C; 
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 50px;
-    width: 330px;
-    height: 150px;
-    margin: 4px 2px;
-    cursor: pointer;
-    transition-duration: 0.4s;
-}
-.button1:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
-
-.button2:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
-
-</style>
-<center>
-   <div class="heading">
-        <h1 style="margin-top: 30px;"> 
-        </h1>
-   </div>
-     <img id="image" src="./images/logo.png" width="230px" height="230px">
-  <div class="fes">
-     <p align="center"> Faculty Evaluation System </p>
-      <br> 
-  </div>
-  <div class="jp">
-     <p align="center"> -Office of Guidance- </p>
-      <br> 
-  </div>
-  
-</center>
 </head>
-<body style="background:linear-gradient(to bottom right,white,lightblue,white); height:790px">
-	
-<table align="center" cellpadding="10">
-		<tr>
-			<td><a href="studenthere1.php"><button class="button button1">STUDENT</button></a>
-			<td><a href="adminhere.php"><button class="button button2">ADMIN</button><ADMIN</button></a>
-		</tr>
-	</table>
+
+<header>
+	<div class="container-fluid bg-primary">
+
+		<div class="row">
+			<div class="container" style="padding: 20px 0px;">
+
+				<div class="col-md-3">
+					<div class="box">
+							<img class="img-responsive" src="./images/logo.png">
+					</div>
+				</div>
+
+				<div class="col-md-6 text-center">
+						<h1 class="font"> Faculty Evaluation System </h1>
+						<h1 class="font2"> - Office of Guidance - </h1>
+				</div>
+
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+
+	</div>
+</header>
+
+<body style="background:linear-gradient(to bottom right,white,lightblue,white);">
+
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8 text-center" style="margin-top: 50px;">
+		<div class="row font2">
+			<div class="col-md-4">
+					<a href="studenthere1.php"><button class="btn btn-lg btn-primary" style="width: 100%; height: 100px; font-size: 30px;">
+						<i class="fa fa-user"></i> STUDENT</button></a>
+			</div>
+			<div class="col-md-4">
+					<a href="adminhere.php"><button class="btn btn-lg btn-success" style="width: 100%; height: 100px; font-size: 30px;">
+						<i class="fa fa-user-circle-o"></i> ADMIN</button></a>
+			</div>
+			<div class="col-md-4">
+					<a href="teacher.php"><button type="button" style="width: 100%; height: 100px; font-size: 30px;"
+						class="btn btn-lg btn-warning" name="button"><i class="fa fa-user-md"></i> TEACHER</button></a>
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-2"></div>
+</div>
+
 
 </body>
 </html>
