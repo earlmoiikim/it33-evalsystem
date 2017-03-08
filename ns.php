@@ -10,7 +10,7 @@ function nursing(){
       <tr>
        <td width="500"><b> 1. shows knowledge and mastery in using the equipments, instruments as well as carrying out of all procedures necessary in the clinical area. </b></td>
         <td with="150"> <select class="form-control"name="ci[0]">
-       <option selected="true" disabled="disabled">-CHOOSE-</option>
+       <option disabled selected hidden value>-CHOOSE-</option>
        <option value="4" >Excellent</option>
        <option value="3">Very Good</option>
        <option value="2">Satisfactory</option>
@@ -21,7 +21,7 @@ function nursing(){
        <tr>
        <td width="500"><b> 2. provides fair student assignments in the area </b></td>
         <td with="150"> <select class="form-control"name="ci[1]">
-       <option selected="true" disabled="disabled">-CHOOSE-</option>
+       <option disabled selected hidden value>-CHOOSE-</option>
        <option value="4" >Excellent</option>
        <option value="3">Very Good</option>
        <option value="2">Satisfactory</option>
@@ -33,7 +33,7 @@ function nursing(){
        <tr>
        <td width="500"><b> 3. supervises students in using the equipments and instruments in the area </b></td>
         <td with="150"> <select class="form-control"name="ci[2]">
-       <option selected="true" disabled="disabled">-CHOOSE-</option>
+       <option disabled selected hidden value>-CHOOSE-</option>
        <option value="4" >Excellent</option>
        <option value="3">Very Good</option>
        <option value="2">Satisfactory</option>
@@ -44,7 +44,7 @@ function nursing(){
        <tr>
        <td width="500"><b> 4. make sure that students are ethical, moral, spiritual and are able to respect individual differences in the area. </b></td>
         <td with="150"> <select class="form-control"name="ci[3]">
-       <option selected="true" disabled="disabled">-CHOOSE-</option>
+       <option disabled selected hidden value>-CHOOSE-</option>
        <option value="4" >Excellent</option>
        <option value="3">Very Good</option>
        <option value="2">Satisfactory</option>
@@ -56,7 +56,7 @@ function nursing(){
        <tr>
        <td width="500"><b> 5. gives students not less that three quizzes. </b></td>
         <td with="150"> <select class="form-control"name="ci[4]">
-       <option selected="true" disabled="disabled">-CHOOSE-</option>
+       <option disabled selected hidden value>-CHOOSE-</option>
        <option value="4" >Excellent</option>
        <option value="3">Very Good</option>
        <option value="2">Satisfactory</option>
@@ -67,7 +67,7 @@ function nursing(){
        <tr>
        <td width="500"><b> 6. conducts class in english. </b></td>
         <td with="150"> <select class="form-control"name="ci[5]">
-       <option selected="true" disabled="disabled">-CHOOSE-</option>
+       <option disabled selected hidden value>-CHOOSE-</option>
        <option value="4" >Excellent</option>
        <option value="3">Very Good</option>
        <option value="2">Satisfactory</option>
@@ -79,7 +79,7 @@ function nursing(){
        <tr>
        <td width="500"><b> 7. provides post RLE conferences. </b></td>
         <td with="150"> <select class="form-control"name="ci[6]">
-       <option selected="true" disabled="disabled">-CHOOSE-</option>
+       <option disabled selected hidden value>-CHOOSE-</option>
        <option value="4" >Excellent</option>
        <option value="3">Very Good</option>
        <option value="2">Satisfactory</option>

@@ -1,10 +1,23 @@
 <?php
+session_start();
 include 'functions/function.php';
 
-$teacher = "SHERYL RODRIGUEZ";
-$r = scoresbyteacher($teacher);
+$result = findteacha($_SESSION['id']);
 
- ?>
+$teacher = $result->name;
+$r = scoresbyteacher($teacher);
+if(empty($r)){
+  header('Location: teacher.php?no-eval');
+}
+
+  if($r->department == "NURSING"){
+    $section = nursingsection($teacher);
+  }
+  else{
+    $section = '';
+  }
+
+?>
 
 <html>
 <head>
@@ -43,13 +56,25 @@ $r = scoresbyteacher($teacher);
   </header>
 
   <div class="container">
-    <h2>Modal Example</h2>
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-    <?php echo $r->teach; ?>
+    <div class="row">
+      <div class="col-md-3"> </div>
+      <div class="col-md-6 text-center bgwhite padvertical"
+      style="border-radius: 10px; padding-bottom: 50px;">
+        <h1 class="font" style="margin-bottom: 0px; font-size: 70px;"><?php echo $r->teach; ?></h1>
+        <h1 class="font3" style="margin-top: 0px; margin-bottom: 20px;">Department: <?php echo $r->department; ?></h1>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-success" data-toggle="modal"
+        data-target="#evaldetails">Evaluation Details</button>
+        <button type="button" class="btn btn-warning" data-toggle="modal"
+        data-target="#" name="button" disabled>See Comments</button>
+        <a href="index.php" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal fade" id="evaldetails" role="dialog">
       <div class="modal-dialog modal-lg">
         <?php $teacher = "SHERYL RODRIGUEZ";
         $r = scoresbyteacher($teacher); ?>
@@ -142,61 +167,7 @@ $r = scoresbyteacher($teacher);
               </div>
             </div>
             <!--end of row  -->
-
-          <div class="row">
-            <div class="col-md-12">
-            <p><strong>A2. RLE CLINICAL INSTRUCTORS (FOR NURSING STUDENTS ONLY)</strong></p>
-            <table class="table table-bordered ">
-              <tr>
-                <th class="text-center">Item/Parameter</th>
-                <th class="text-center">Rating</th>
-                <th class="text-center">Qualitative Description</th>
-              </tr>
-              <tr>
-                <td>1. shows knowledge and mastery in using the equipments, instruments as well as carrying out of all procedures necessary in the clinical area.</td>
-                <td class="text-center"><?php echo $g = rating($r->ci1, $r->students); ?></td>
-                <td class="text-center"><?php echo description($g); ?></td>
-              </tr>
-              <tr>
-                <td>2. provides fair student assignments in the area.</td>
-                <td class="text-center"><?php echo $g = rating($r->ci2, $r->students); ?></td>
-                <td class="text-center"><?php echo description($g); ?></td>
-              </tr>
-              <tr>
-                <td>3. supervises students in using the equipments and instruments in the area.</td>
-                <td class="text-center"><?php echo $g = rating($r->ci3, $r->students); ?></td>
-                <td class="text-center"><?php echo description($g); ?></td>
-              </tr>
-              <tr>
-                <td>4. make sure that students are ethical, moral, spiritual and are able to respect individual differences in the area.</td>
-                <td class="text-center"><?php echo $g = rating($r->ci4, $r->students); ?></td>
-                <td class="text-center"><?php echo description($g); ?></td>
-              </tr>
-              <tr>
-                <td>5. gives students not less that three quizzes.</td>
-                <td class="text-center"><?php echo $g = rating($r->ci5, $r->students); ?></td>
-                <td class="text-center"><?php echo description($g); ?></td>
-              </tr>
-              <tr>
-                <td>6. conducts class in english.</td>
-                <td class="text-center"><?php echo $g = rating($r->ci6, $r->students); ?></td>
-                <td class="text-center"><?php echo description($g); ?></td>
-              </tr>
-              <tr>
-                <td>7. provides post RLE conferences.</td>
-                <td class="text-center"><?php echo $g = rating($r->ci7, $r->students); ?></td>
-                <td class="text-center"><?php echo description($g); ?></td>
-              </tr>
-
-              <tr>
-                <th class="text-center"> Total Rating </th>
-                <th class="text-center"><?php echo $g = sectionrating($r->ci, $r->students, 7); ?></th>
-                <th class="text-center"><?php echo description($g); ?></th>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <!--end of row  -->
+            <?php echo $section; ?>
 
           <div class="row">
             <div class="col-md-12">
