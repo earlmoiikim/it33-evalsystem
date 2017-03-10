@@ -90,7 +90,7 @@ if(isset($_GET['success'])){
           <option value="NURSING"> NURSING </option>
           <option value="CRIMINOLOGY"> CRIMINOLOGY </option>
           <option value="EDUCATION"> EDUCATION </option>
-          <option value="BA"> B.A </option>
+          <option value="B.A"> B.A </option>
           <option value="CHM"> CHM </option>
           </select>
           <div class="pull-right" style="margin-top: 10px;">
