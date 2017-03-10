@@ -23,6 +23,7 @@ if(isset($_GET['dept'])){
     $results = searchbydept("CRIMINOLOGY");
   }
   if($_GET['dept'] == "ba"){
+    echo "in here";
     $results = searchbydept("B.A");
   }
   if($_GET['dept'] == "edu"){
@@ -70,13 +71,13 @@ if(isset($_GET['dept'])){
 
 <div class="container bg-white">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-1">
       <a href="adminrecord.php"><button class="btn btn-danger" type="button" name="button">
         <i class="fa fa-arrow-left"></i> BACK</button>
     </a>
     </div>
-    <div class="col-md-7">
-      <div class="form-inline">
+    <div class="col-md-6">
+      <div class="form-inline pull-right">
         <label for="">Search by dept : </label>
         <a href="views.php?dept=ict" class="btn btn-default">ICT</a>
         <a href="views.php?dept=eng" class="btn btn-default">ENG</a>
@@ -88,17 +89,25 @@ if(isset($_GET['dept'])){
       </div>
     </div>
     <div class="col-md-3">
-        <div class="form-group">
-          <form class="input-group" action="#" method="post">
-            <input class="form-control" type="text" name="searchname" placeholder="Search by name">
-            <span class="input-group-addon"> <i class="fa fa-search"></i>
-            </span>
-          </form>
-        </div>
+      <div class="form-group">
+        <form class="input-group" action="#" method="post">
+          <input class="form-control" type="text" name="searchname" placeholder="Search by name">
+          <span class="input-group-addon"> <i class="fa fa-search"></i>
+          </span>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="pull-right">
+        <a href="#" class="btn btn-warning"
+        title="download overall table" disabled>Download</a>
+        <a href="#" class="btn btn-warning" onclick="PrintTable();"
+        title="print this table">Print</a>
+      </div>
     </div>
   </div>
 
-  <div class="row" style="height: 400px; overflow: auto;">
+  <div class="row" style="height: 400px; overflow: auto;"id="divToPrint">
     <table class="table table-responsive table-striped table-bordered text" align="center">
     	<tr>
     		<th>Name of Faculty</th>
@@ -170,4 +179,11 @@ if(isset($_GET['dept'])){
         });
       }
   });
+  function PrintTable() {
+     var divToPrint = document.getElementById('divToPrint');
+     var popupWin = window.open('', '_blank', 'width=500,height=500');
+     popupWin.document.open();
+     popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+      popupWin.document.close();
+          }
 </script>
