@@ -36,6 +36,7 @@
 		</div>
 	</header>
 
+<br><br><br>
 	<div class="container">
 		<div class="row font2">
 			<div class="col-md-2"></div>
@@ -72,8 +73,8 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<a href="index.php">
-					 <button class="btn btn-primary btn-lg btn-block">
-						 <h1> <i class="fa fa-sign-out"></i>
+					 <button class="btn btn-primary btn-lg btn-block" style="height:70px;">
+						 <h1 style="margin-top: 10px"> <i class="fa fa-sign-out"></i>
 							 LOGOUT</h1></button></a>
 					</div>
 				</div>

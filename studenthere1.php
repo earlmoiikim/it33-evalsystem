@@ -65,19 +65,21 @@ if (isset($_POST['submit'])) {
 
     </div>
   </header>
-
+   <br> <br>   <br> <br>
   <div class="container">
     <div class="row">
       <div class="col-md-4"></div>
-      <div class="col-md-4 bgwhite font3 padings" style="padding: 0px 40px 20px 40px;">
+      <div class="col-md-4 bgwhite font3 padings" style="padding: 5px 40px 10px 40px;">
         <form method="POST" class="form-group" action="studenthere1.php">
           <h1 class="text-center">Student Log In</h1>
-          <input  placeholder="Enter Code Here..." name="generatecode" type="text"
+           <br>
+          <input placeholder="Enter Code Here..." name="generatecode" type="text" style="height:50px"
           required class="form-control"/>
+          <br>
           <div class="text-center margin">
-         <button name="submit" class="btn btn-primary">Submit</button>
+         <button name="submit" class="btn btn-primary" style="margin-top: -2px"> <font size="5px;"> Submit</button>
         </form>
-         <a href="index.php" class="btn btn-danger">Back</a>
+         <a href="index.php" class="btn btn-danger"> <font size="5px;">Back</a>
         </div>
       </div>
       <div class="col-md-4"></div>

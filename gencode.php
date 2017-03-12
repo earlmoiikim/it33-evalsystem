@@ -42,6 +42,7 @@ if (isset($_GET["success"])){
 </head>
 
 <body style="background:linear-gradient(to bottom right,white,lightblue,white);">
+  
   <header>
     <div class="container-fluid bg-primary">
 
@@ -67,12 +68,13 @@ if (isset($_GET["success"])){
   </header>
 
   <form action="studenthere.php" method="POST">
+  <br><br>
   <div class="container">
     <div class="col-md-3"></div>
     <div class="col-md-6 bgwhite" style="padding: 10px 50px 20px 50px">
       <div class="form-group" visibility: <?php echo $test1;?>>
-        <h2> <p align="center"><font color="black">
-          Copy the code below for Student Log In </h2>
+        <h3> <p align="center"><font color="black">
+          Copy the code below for Student Log In </h3>
 
           <h1 align="center" style="font-size: 50px"> <?php echo $code;?> </h1>
           <div align="center">

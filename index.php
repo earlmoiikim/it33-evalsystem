@@ -38,7 +38,7 @@
 
 <div class="row">
 	<div class="col-md-2"></div>
-	<div class="col-md-8 text-center" style="margin-top: 50px;">
+	<div class="col-md-8 text-center" style="margin-top: 100px;">
 		<div class="row font2">
 			<div class="col-md-4">
 					<a href="studenthere1.php"><button class="btn btn-lg btn-primary" style="width: 100%; height: 100px; font-size: 30px;">
