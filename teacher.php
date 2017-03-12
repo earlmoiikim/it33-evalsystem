@@ -17,7 +17,7 @@ if (isset($_POST['submit'])){
 ?>
 <html>
 <head>
-	<title>Student LogIn</title>
+	<title>Teacher LogIn</title>
   <!-- Bootstrap Core CSS -->
   <link href="style/bootstrap.min.css" rel="stylesheet">
   <!-- Icons -->

@@ -21,9 +21,9 @@ $data = teacherupdate($id);
 
 if(isset($_POST['update'])){
 
-$nid = $_POST['id'];
-$neid = $_POST['empnum'];
-$nname = $_POST['name'];
+$nid = strtoupper($_POST['id']);
+$neid = strtoupper($_POST['empnum']);
+$nname = strtoupper($_POST['name']);
 $ndept = $_POST['dept'];
 
 $db = connect();
@@ -77,7 +77,9 @@ else
 <div class="container">
   <div class="">
   <div class="sclass"> <?php echo $msg; ?> </div>
+
     <form action="edit.php" method="POST">
+
       <input type="hidden" value="<?php echo $id ?>" name= 'id'>
       <div class="col-md-4"></div>
       <div class="col-md-4 bgwhite" style="padding: 20px 30px 20px 30px">
@@ -86,10 +88,10 @@ else
           <label>Employee Number : </label>
           <input type="text" name="empnum" value="<?php echo $emp_id ?>"
           class="form-control botspace" size="30" height= "100" minlength="7" maxlength="7"
-          title="example format: SRT-123" required style="margin-bottom: 10px;">
+          title="example format: SRT-123" required style="margin-bottom: 10px; text-transform:uppercase;">
           <label>Employee Name : </label>
           <input type="text" name="name" value="<?php echo $name ?>"
-          class="form-control botspace" required style="margin-bottom: 10px;">
+          class="form-control botspace" required style="margin-bottom: 10px; text-transform:uppercase;">
           <label>Department : </label>
           <select name="dept" value="<?php echo $department ?>"
           class="form-control botspace" required style="margin-bottom: 10px;">
