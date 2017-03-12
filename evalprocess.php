@@ -207,7 +207,7 @@ if(isset($_POST['submit'])){
 		    }
 		    else{
 		    	echo "error";
-		        header('Location: http://localhost/IT33/tt.php?ERROR');
+		        header('Location: http://localhost/IT33/tt.php?error=2');
 		    }
     	}
   	}

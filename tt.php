@@ -485,4 +485,15 @@ if(isset($_GET['error']) && $_GET['error'] == 1){
           alert("You have already evaluated this teacher");
         </script>';
 }
+if(isset($_GET['error']) && $_GET['error'] == 2){
+  echo '<script type="text/javascript">
+          alert("Something went wrong, ask for support");
+        </script>';
+}
+if(isset($_GET['success'])){
+  echo '<script type="text/javascript">
+          alert("Evaluation Submitted!");
+        </script>';
+}
+
  ?>
