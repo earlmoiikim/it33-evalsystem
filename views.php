@@ -110,7 +110,7 @@ if(isset($_GET['dept'])){
     </div>
   </div>
 
-  <div class="row" style="height: 400px; overflow: auto;"id="divToPrint">
+  <div class="row" style="height: 400px; overflow: auto;">
     <table class="table table-responsive table-striped table-bordered text" align="center">
     	<tr>
     		<th>Name of Faculty</th>
@@ -130,7 +130,6 @@ if(isset($_GET['dept'])){
       <?php endforeach; ?>
     </table>
   </div>
-
 </div>
 
 <div class="modal fade" id="details" role="dialog">
@@ -142,6 +141,36 @@ if(isset($_GET['dept'])){
       </div>
       <div class="modal-body" id="eval-details">
 
+      </div>
+      <div class="modal-footer">
+        <button type="button" name="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="none" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Evaluation Details</h4>
+      </div>
+      <div class="modal-body" id="divToPrint">
+        <table class="table table-responsive table-striped table-bordered text" align="center">
+          <tr>
+            <th>Name of Faculty</th>
+            <th>Mean Rating</th>
+            <th>Descriptive Equivalent</th>
+          </tr>
+          <?php foreach($results as $g): ?>
+            <tr>
+              <td><?php echo $g->teacher ?></td>
+              <td><?php echo $g->grade ?></td>
+              <td><?php echo $g->description ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </table>
       </div>
       <div class="modal-footer">
         <button type="button" name="btn btn-default" data-dismiss="modal">Close</button>
