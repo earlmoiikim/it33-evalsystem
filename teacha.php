@@ -351,7 +351,7 @@ if(empty($r)){
 
                 <tr>
                   <th class="text-center"> Total Rating </th>
-                  <th class="text-center"><?php echo $g = sectionrating($r->ir, $r->students, 3); ?></th>
+                  <th class="text-center"><?php echo $g = sectionrating($r->ir, $r->students, 4); ?></th>
                   <th class="text-center"><?php echo description($g); ?></th>
                 </tr>
 

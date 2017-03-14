@@ -381,4 +381,52 @@ $html .= '<div class="row">
 
 echo $html;
 }
+
+if(isset($_POST['comments'])){
+  $r = getcomments($_POST['comments']);
+  $data = '';
+  $data .= '<div class="text-center"><h4>'.$_POST['comments'].'</h4></div>';
+  $data .= '<table class="table table-responsive table-striped table-bordered">
+    <tr>
+      <th>Strength</th>
+      <th>Weakness</th>
+      <th>Delete</th>
+    </tr>';
+  foreach($r as $g){
+    $data .= '  <tr>
+        <td>'.$g->str.'</td>
+        <td>'.$g->weak.'</td>
+        <td class="text-center"><a class="deletecomment btn btn-danger" data-id="'.$g->id.'">
+        <i class="fa fa-trash"></i></a></td>
+      </tr>';
+  }
+  $data .= '</table>';
+  echo $data;
+}
+
+if(isset($_POST['commentid'])){
+  $g = getcommentbyid($_POST['commentid']);
+  $teacher = $g->prof;
+  deletecomment($_POST['commentid']);
+  $r = getcomments($teacher);
+  $data = '';
+  $data .= '<div class="text-center"><h4>'.$teacher.'</h4></div>';
+  $data .= '<table class="table table-responsive table-striped table-bordered">
+    <tr>
+      <th>Strength</th>
+      <th>Weakness</th>
+      <th>Delete</th>
+    </tr>';
+  foreach($r as $g){
+    $data .= '  <tr>
+        <td>'.$g->str.'</td>
+        <td>'.$g->weak.'</td>
+        <td class="text-center"><a class="deletecomment btn btn-danger" data-id="'.$g->id.'">
+        <i class="fa fa-trash"></i></a></td>
+      </tr>';
+  }
+  $data .= '</table>';
+  echo $data;
+}
+
 ?>

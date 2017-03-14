@@ -177,6 +177,33 @@ function userbycode($code){
   return $results = $query->fetch(PDO::FETCH_OBJ);
 }
 
+function getcomments($teacher){
+  $db = connect();
+  $query = $db->prepare("SELECT * FROM comments
+  WHERE prof = '$teacher'");
+  $query->execute();
+  return $results = $query->fetchAll(PDO::FETCH_OBJ);
+}
+
+function getcommentbyid($id){
+  $db = connect();
+  $query = $db->prepare("SELECT * FROM comments
+  WHERE id = '$id'");
+  $query->execute();
+  return $results = $query->fetch(PDO::FETCH_OBJ);
+}
+
+function deletecomment($id){
+  $db = connect();
+  $query = $db->prepare("DELETE FROM comments WHERE id = '$id'");
+  if($query->execute()){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
 function findteacha($id){
   $db = connect();
   $query = $db->prepare("SELECT * FROM teachers

@@ -32,10 +32,17 @@ if(isset($_POST['submit'])){
   }
   $index = 0;
   if(isset($_POST['ci'])){
-    foreach ($_POST['ci'] as $s) {
-      $ci = $ci + $s;
-      $ci_arr[$index] = $s;
-      $index = $index + 1;
+    if($sql1->department == 'NURSING'){ //if the teacher is not nursing discard ci
+      foreach ($_POST['ci'] as $s) {
+        $ci = $ci + $s;
+        $ci_arr[$index] = $s;
+        $index = $index + 1;
+      }
+    }
+    else{
+      for($i = 0; $i < 7; $i++){
+        $ci_arr[$i] = 0;
+    }
     }
   }
   else{
@@ -82,8 +89,6 @@ if(isset($_POST['submit'])){
   $str = $_POST['str'];
   $weak = $_POST['weak'];
 
-
-
   //then check if the teacher is already evaluated by the specific student
   $sql2 = "SELECT * FROM votes WHERE code = '$code' AND teacher_name = '$teach'";
   $sth2 = $db->prepare($sql2);
@@ -94,8 +99,9 @@ if(isset($_POST['submit'])){
     	$error = "You have already evaluated this teacher!";
     }
     else{
-		  //if not then continue
-		  //if teacher already exist in subject table
+      //if not then continue
+
+      //if teacher already exist in subject table
 		  if($found){
 		    //get the current evaluation count
 		    $score = $result->score; //evaluation score
@@ -148,13 +154,13 @@ if(isset($_POST['submit'])){
       echo '<br>';
 		  $count = $count + 1; //just increment the student count
 
-      if($ci == 0){
+      if($ci == 0){ //if ci has no vote meaning, this student is not nursing
         $div = 29;
       }
       else{
         $div = 36;
       }
-		  //get overall grade divide by 8 then divide by student count
+		  //get overall grade divide by number of parameters then divide by student count
 		  $grade = ($score / $div) / $count;
 
       $description = description($grade);
@@ -199,9 +205,10 @@ if(isset($_POST['submit'])){
 		  }
 
 		 	//then insert into votes table the record of this particular student evaluating this particular teacher and the comments
-		    $query1 = $db->prepare("INSERT INTO votes SET code = '$code', teacher_name = '$teach', str = '$str', weak = '$weak' ");
+		    $query1 = $db->prepare("INSERT INTO votes SET code = '$code', teacher_name = '$teach'");
+		    $query3 = $db->prepare("INSERT INTO comments SET code = '$code', prof = '$teach', str = '$str', weak = '$weak' ");
 
-		    if($stmt->execute() && $query2->execute() && $query1->execute()){
+		    if($stmt->execute() && $query2->execute() && $query1->execute() && $query3->execute()){
 		        header('Location: http://localhost/IT33/tt.php?success');
 		        echo "success";
 		    }

@@ -64,10 +64,10 @@
 								 RESULTS</h1></button></a>
 					</div>
 					<div class="col-sm-6">
-						<a href="">
+						<a href="comments.php">
 						<button class="btn btn-primary btn-lg btn-block">
 							<h1><i class="fa fa-lock"></i>
-								TEMPORARY</h1></button></a>
+								COMMENTS</h1></button></a>
 					</div>
 				</div>
 				<div class="row">
