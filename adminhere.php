@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include "./database/database.php";
@@ -10,8 +9,6 @@ $username='';
  if(isset($_POST['submit'])){
       $username = $_POST['user'];
       $password = $_POST['pass'];
-      // $password = sha1($_POST['pass']);
-
 
             $data = Login($username,$password);
             if($data){
@@ -23,8 +20,10 @@ $username='';
                      header('Location: adminrecord.php');
                   }
                   else{
-                     $msg = '';
-                 $username = $_POST['user'];
+                 //     $msg = '';
+                 // $username = $_POST['user'];
+                  header('Location: http://localhost/IT33/adminhere.php?error');
+
                   }
 
 
@@ -33,9 +32,9 @@ $username='';
 
 
             else{
-               $msg = '';
-                 $username = $_POST['user'];
-
+               // $msg = '';
+               //   $username = $_POST['user'];
+            header('Location: http://localhost/IT33/adminhere.php?error');
                 }
      }
 
@@ -102,9 +101,16 @@ $username='';
   </div>
 </div>
 
-   <div class="error_msg" visibility: <?php echo $msg; ?>>
-    <p>Invalid Username or Password</p>
-  </div>
+    <div class="error">
+      <?php
+      if(isset($_GET['error'])==1){
+   echo '<script type="text/javascript">
+          alert("You Have Entered An Invalid Code");
+        </script>';
+      // echo '<p>You Have Entered An Invalid Code!<p/>';
+      }
+      ?>
+    </div>
 
 </body>
 </html>

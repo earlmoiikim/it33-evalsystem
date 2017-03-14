@@ -104,7 +104,7 @@ if(isset($_GET['success'])){
   </div>
 
   <div id="save" visibility: <?php echo $test;?>>
-    <div id="inside"><p style="font-size: 40px">Your data is successfully saved!</p>
+    <div id="inside"><p style="font-size: 30px">Your data is successfully saved!</p>
     <a href="chereg.php"><button id="okbutton" autofocus="autofocus">OKAY!</button></a>
     </div>
   </div>
@@ -128,16 +128,16 @@ if(isset($_GET['success'])){
 }
 #inside{
   position: absolute;
-  top: 280px;
-  left: 100px;
+  top: 100px;
+  left: -10px;
   right: 0;
   bottom: 0;
   margin: auto;
   font-size: 15px;
   color: black;
   font-weight: bold;
-  width: 500px;
-  height: 350px;
+  width: 390px;
+  height: 250px;
   background-color: #ededed;
   border: 3px blue;
   border-style: solid;
@@ -145,7 +145,7 @@ if(isset($_GET['success'])){
 #okbutton{
   margin-top: 40px;
   width: 150px;
-  height: 80px;
+  height: 70px;
   background-color: crimson;
   color: white;
   font-size: 30px;
