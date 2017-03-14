@@ -65,8 +65,8 @@ if(empty($r)){
         <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-success" data-toggle="modal"
         data-target="#evaldetails">Evaluation Details</button>
-        <button type="button" class="btn btn-warning" data-toggle="modal"
-        data-target="#" name="button" disabled>See Comments</button>
+        <button type="button" class="btn btn-warning seecomm" data-toggle="modal"
+        data-target="#comments-modal" name="button" >See Comments</button>
         <a href="index.php" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
       </div>
       <div class="col-md-3"></div>
@@ -84,7 +84,7 @@ if(empty($r)){
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Evaluation Details</h4>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="details">
             <label for="">Instructor : </label> <p style="display: inline"> <?php echo $r->teach; ?></p>
             <div class="pull-right">
               <label for="">Department : </label> <p style="display: inline"> <?php echo $r->department; ?></p>
@@ -370,6 +370,36 @@ if(empty($r)){
       </div>
     </div>
 
+    <div class="modal fade" id="comments-modal" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Comments</h4>
+          </div>
+          <div class="modal-body" id="comments">
+            <div class="text-center">
+              <h3><?php echo $r->teach; ?></h3>
+            </div>
+            <table class="table table-responsive table-striped table-bordered">
+              <tr>
+                <th>Strength</th>
+                <th>Weakness</th>
+              </tr>
+              <?php foreach(getcomments($r->teach) as $res): ?>
+                <tr>
+                  <td><?php echo $res->str; ?></td>
+                  <td><?php echo $res->weak; ?></td>
+                </tr>
+              <?php endforeach; ?>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 </body>
 </html>
@@ -377,6 +407,7 @@ if(empty($r)){
 <script src="js/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+
 <style media="screen" type="text/css">
   .text tr th{
     text-align: center;
