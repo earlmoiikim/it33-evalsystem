@@ -212,6 +212,14 @@ function findteacha($id){
   return $results = $query->fetch(PDO::FETCH_OBJ);
 }
 
+function getteacha($teacher){
+  $db = connect();
+  $query = $db->prepare("SELECT * FROM teachers
+  WHERE name = '$teacher'");
+  $query->execute();
+  return $results = $query->fetch(PDO::FETCH_OBJ);
+}
+
 function nursingsection($teacher){
   $r = scoresbyteacher($teacher);
   $section = '<div class="row">

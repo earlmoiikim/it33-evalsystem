@@ -8,6 +8,9 @@ if(isset($_POST['submit'])){
   //before anything else check if the teacher is already evaluated
   $sql1 = "SELECT * FROM overall WHERE teacher = '$teach'";
   $sth1 = $db->prepare($sql1);
+
+  $sth = getteacha($teach);
+  echo $sth->department;
   if($sth1->execute()){
     if($sth1->rowcount() > 0){
       $found = true; //teacher found
@@ -32,7 +35,7 @@ if(isset($_POST['submit'])){
   }
   $index = 0;
   if(isset($_POST['ci'])){
-    if($sql1->department == 'NURSING'){ //if the teacher is not nursing discard ci
+    if($sth->department == 'NURSING'){ //if the teacher is not nursing discard ci
       foreach ($_POST['ci'] as $s) {
         $ci = $ci + $s;
         $ci_arr[$index] = $s;
@@ -209,12 +212,12 @@ if(isset($_POST['submit'])){
 		    $query3 = $db->prepare("INSERT INTO comments SET code = '$code', prof = '$teach', str = '$str', weak = '$weak' ");
 
 		    if($stmt->execute() && $query2->execute() && $query1->execute() && $query3->execute()){
-		        header('Location: http://localhost/IT33/tt.php?success');
+		        //header('Location: http://localhost/IT33/tt.php?success');
 		        echo "success";
 		    }
 		    else{
 		    	echo "error";
-		        header('Location: http://localhost/IT33/tt.php?error=2');
+		        //header('Location: http://localhost/IT33/tt.php?error=2');
 		    }
     	}
   	}
