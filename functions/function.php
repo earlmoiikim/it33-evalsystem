@@ -94,17 +94,17 @@ function Eval4Department_exists($time, $Eval4, $Department){
 }
 
 function description($grade){
-  if($grade >= 1 && $grade <= 1.85){
-    $description = "Ineffective";
+  if($grade >= 1 && $grade <= 1.49){
+    $description = "Unsatisfactory";
   }
-  elseif ($grade > 1.85 && $grade <= 2.65) {
-    $description = "Partially Effective";
+  elseif ($grade > 1.5 && $grade <= 2.49) {
+    $description = "Very Good";
   }
-  elseif ($grade > 2.65 && $grade <= 3.5) {
-    $description = "Effective";
+  elseif ($grade > 2.5 && $grade <= 3.49) {
+    $description = "Satisfactory";
   }
   else{
-    $description = "Highly Effective";
+    $description = "Excellent";
   }
   return $description;
 }

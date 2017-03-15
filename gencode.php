@@ -88,6 +88,7 @@ if (isset($_GET["success"])){
                <option>EDUCATION</option>
                <option>CRIMINOLOGY</option>
                <option>B.A</option>
+               <option>SENIORHIGH</option>
             </select>
           </div>
 

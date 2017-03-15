@@ -92,6 +92,7 @@ if(isset($_GET['success'])){
           <option value="EDUCATION"> EDUCATION </option>
           <option value="B.A"> B.A </option>
           <option value="CHM"> CHM </option>
+          <option value="SENIORHIGH"> SHS </option>
           </select>
           <div class="pull-right" style="margin-top: 10px;">
             <input type="submit" value="SUBMIT" name="submit" class="btn btn-primary">

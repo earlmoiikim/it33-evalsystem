@@ -23,14 +23,15 @@ if(isset($_GET['dept'])){
     $results = searchbydept("CRIMINOLOGY");
   }
   if($_GET['dept'] == "ba"){
-    echo "in here";
     $results = searchbydept("B.A");
   }
   if($_GET['dept'] == "edu"){
     $results = searchbydept("EDUCATION");
   }
+  if($_GET['dept'] == "shs"){
+    $results = searchbydept("SENIORHIGH");
+  }
 }
-
  ?>
 
 <html>
@@ -79,14 +80,16 @@ if(isset($_GET['dept'])){
     <div class="col-md-6">
       <div class="form-inline pull-right">
         <label for="">Search by dept : </label>
-        <a href="views.php?dept=ict" class="btn btn-default">ICT</a>
-        <a href="views.php?dept=eng" class="btn btn-default">ENG</a>
-        <a href="views.php?dept=nur" class="btn btn-default">NUR</a>
-        <a href="views.php?dept=chm" class="btn btn-default">CHM</a>
-        <a href="views.php?dept=cri" class="btn btn-default">CRI</a>
-        <a href="views.php?dept=ba" class="btn btn-default">BA</a>
-        <a href="views.php?dept=edu" class="btn btn-default">EDU</a>
+        <a href="views.php?dept=ict" class="btn btn-default" style="padding:5px;">ICT</a>
+        <a href="views.php?dept=eng" class="btn btn-default" style="padding:5px;">ENG</a>
+        <a href="views.php?dept=nur" class="btn btn-default" style="padding:5px;">NUR</a>
+        <a href="views.php?dept=chm" class="btn btn-default" style="padding:5px;">CHM</a>
+        <a href="views.php?dept=cri" class="btn btn-default" style="padding:5px;">CRI</a>
+        <a href="views.php?dept=ba" class="btn btn-default" style="padding:5px;">BA</a>
+        <a href="views.php?dept=edu" class="btn btn-default" style="padding:5px;">EDU</a>
+        <a href="views.php?dept=shs" class="btn btn-default" style="padding:5px;">SHS</a>
       </div>
+
     </div>
     <div class="col-md-3">
       <div class="form-group">
