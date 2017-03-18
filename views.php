@@ -157,7 +157,7 @@ if(isset($_GET['dept'])){
         <h4 class="modal-title">Evaluation Details</h4>
       </div>
       <div class="modal-body" id="divToPrint">
-        <table class="table table-responsive table-striped table-bordered text" align="center">
+        <table border="1" class="table table-responsive table-striped table-bordered text" align="center">
           <tr>
             <th>Name of Faculty</th>
             <th>Mean Rating</th>

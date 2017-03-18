@@ -28,6 +28,9 @@ if(isset($_GET['dept'])){
   }
   if($_GET['dept'] == "edu"){
     $results = searchbydept("EDUCATION");
+  }  
+  if($_GET['dept'] == "shs"){
+    $results = searchbydept("SENIORHIGH");
   }
 }
 
@@ -76,7 +79,7 @@ if(isset($_GET['dept'])){
         <i class="fa fa-arrow-left"></i> BACK</button>
     </a>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-7">
       <div class="form-inline pull-left">
         <label for="">Search by dept : </label>
         <a href="comments.php?dept=ict" class="btn btn-default">ICT</a>
@@ -86,9 +89,10 @@ if(isset($_GET['dept'])){
         <a href="comments.php?dept=cri" class="btn btn-default">CRI</a>
         <a href="comments.php?dept=ba" class="btn btn-default">BA</a>
         <a href="comments.php?dept=edu" class="btn btn-default">EDU</a>
+        <a href="comments.php?dept=shs" class="btn btn-default">SHS</a>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="form-group">
         <form class="input-group" action="#" method="post">
           <input class="form-control" type="text" name="searchname" placeholder="Search by name">

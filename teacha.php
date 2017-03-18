@@ -4,7 +4,7 @@ include 'functions/function.php';
 
 $result = findteacha($_SESSION['id']);
 
-$teacher = $result->name;
+echo $teacher = $result->name;
 $r = scoresbyteacher($teacher);
 if(empty($r)){
   header('Location: teacher.php?no-eval');
@@ -76,8 +76,6 @@ if(empty($r)){
     <!-- Modal -->
     <div class="modal fade" id="evaldetails" role="dialog">
       <div class="modal-dialog modal-lg">
-        <?php $teacher = "SHERYL RODRIGUEZ";
-        $r = scoresbyteacher($teacher); ?>
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header text-center">
@@ -85,7 +83,7 @@ if(empty($r)){
             <h4 class="modal-title">Evaluation Details</h4>
           </div>
           <div class="modal-body" id="details">
-            <label for="">Instructor : </label> <p style="display: inline"> <?php echo $r->teach; ?></p>
+            <label for="">Instructor : </label> <p style="display: inline"> <?php echo $r->teacher; ?></p>
             <div class="pull-right">
               <label for="">Department : </label> <p style="display: inline"> <?php echo $r->department; ?></p>
             </div>

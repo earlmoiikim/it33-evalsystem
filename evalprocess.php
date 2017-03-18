@@ -212,12 +212,12 @@ if(isset($_POST['submit'])){
 		    $query3 = $db->prepare("INSERT INTO comments SET code = '$code', prof = '$teach', str = '$str', weak = '$weak' ");
 
 		    if($stmt->execute() && $query2->execute() && $query1->execute() && $query3->execute()){
-		        //header('Location: http://localhost/IT33/tt.php?success');
+		        header('Location: http://localhost/IT33/tt.php?success');
 		        echo "success";
 		    }
 		    else{
 		    	echo "error";
-		        //header('Location: http://localhost/IT33/tt.php?error=2');
+		        header('Location: http://localhost/IT33/tt.php?error=2');
 		    }
     	}
   	}
