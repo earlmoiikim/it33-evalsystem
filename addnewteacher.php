@@ -54,7 +54,8 @@ if(isset($_GET['success'])){
 
           <div class="col-md-3">
             <div class="box">
-                <img class="img-responsive" src="./images/logo.png">
+                <img class="img-responsive" src="./images/logo.png"
+                style="margin-left:70px; margin-top:5px">
             </div>
           </div>
 

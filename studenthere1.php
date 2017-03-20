@@ -50,7 +50,8 @@ if (isset($_POST['submit'])) {
 
           <div class="col-md-3">
             <div class="box">
-                <img class="img-responsive" src="./images/logo.png">
+                <img class="img-responsive" src="./images/logo.png"
+                style="margin-left:70px; margin-top:5px">
             </div>
           </div>
 
@@ -73,7 +74,7 @@ if (isset($_POST['submit'])) {
         <form method="POST" class="form-group" action="studenthere1.php">
           <h1 class="text-center">Student Log In</h1>
            <br>
-          <input placeholder="Enter Code Here..." name="generatecode" type="text" style="height:50px"
+          <input placeholder="Enter Code Here..." autocomplete="off" name="generatecode" type="text" style="height:50px"
           required class="form-control"/>
           <br>
           <div class="text-center margin">

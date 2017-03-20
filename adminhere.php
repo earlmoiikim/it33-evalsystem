@@ -59,7 +59,8 @@ $username='';
 
         <div class="col-md-3">
           <div class="box">
-              <img class="img-responsive" src="./images/logo.png">
+              <img class="img-responsive" src="./images/logo.png"
+              style="margin-left:70px; margin-top:5px">
           </div>
         </div>
 
@@ -86,7 +87,7 @@ $username='';
         <h1 class="text-center">Admin Login</h1>
         <br>
           <input placeholder="Username" name="user" type="text" style="height:50px" 
-          class="form-control" required/> <br>
+          autocomplete="off" class="form-control" required/> <br>
           <input placeholder="Password"  name ="pass" style="height:50px" type="password"
           class="form-control" required style="margin-top: 10px;"/>
           
