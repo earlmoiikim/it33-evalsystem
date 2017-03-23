@@ -150,15 +150,7 @@ if(isset($_GET['dept'])){
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <div class="row">
-          <div class="col-md-2">
-            <a href="#" class="btn btn-warning" onclick="Printdetails();"
-            title="print this table">Print</a>
-          </div>
-          <div class="col-md-7 text-center">
-            <h2 class="modal-title">Evaluation Details</h2>
-          </div>
-        </div>
+        <h4 class="modal-title">Evaluation Details</h4>
       </div>
       <div class="modal-body" id="eval-details">
 
@@ -178,7 +170,7 @@ if(isset($_GET['dept'])){
         <h4 class="modal-title">Evaluation Details</h4>
       </div>
       <div class="modal-body" id="divToPrint">
-        <table style="border-collapse: collapsed; border:1px solid black;" class="table table-responsive table-striped table-bordered text"
+        <table style="border-collapse: collapsed; border:1px solid black;" class="table table-responsive table-striped table-bordered text" 
           align="center">
           <tr>
             <th width="400px">Name of Faculty</th>
@@ -238,13 +230,6 @@ if(isset($_GET['dept'])){
   });
   function PrintTable() {
      var divToPrint = document.getElementById('divToPrint');
-     var popupWin = window.open('', '_blank', 'width=500,height=500');
-     popupWin.document.open();
-     popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
-      popupWin.document.close();
-          }
-  function Printdetails() {
-     var divToPrint = document.getElementById('eval-details');
      var popupWin = window.open('', '_blank', 'width=500,height=500');
      popupWin.document.open();
      popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
