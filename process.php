@@ -393,12 +393,17 @@ if(isset($_POST['comments'])){
       <th>Delete</th>
     </tr>';
   foreach($r as $g){
-    $data .= '  <tr>
-        <td>'.$g->str.'</td>
-        <td>'.$g->weak.'</td>
-        <td class="text-center"><a class="deletecomment btn btn-danger" data-id="'.$g->id.'">
-        <i class="fa fa-trash"></i></a></td>
-      </tr>';
+    if($g->str == '' && $g->weak == ''){
+      $data .= '';
+    }
+    else{
+      $data .= '  <tr>
+          <td>'.$g->str.'</td>
+          <td>'.$g->weak.'</td>
+          <td class="text-center"><a class="deletecomment btn btn-danger" data-id="'.$g->id.'">
+          <i class="fa fa-trash"></i></a></td>
+        </tr>';
+    }
   }
   $data .= '</table>';
   echo $data;
@@ -418,12 +423,17 @@ if(isset($_POST['commentid'])){
       <th>Delete</th>
     </tr>';
   foreach($r as $g){
-    $data .= '  <tr>
-        <td>'.$g->str.'</td>
-        <td>'.$g->weak.'</td>
-        <td class="text-center"><a class="deletecomment btn btn-danger" data-id="'.$g->id.'">
-        <i class="fa fa-trash"></i></a></td>
-      </tr>';
+    if($g->str == '' && $g->weak == ''){
+      $data .= '';
+    }
+    else{
+      $data .= '  <tr>
+          <td>'.$g->str.'</td>
+          <td>'.$g->weak.'</td>
+          <td class="text-center"><a class="deletecomment btn btn-danger" data-id="'.$g->id.'">
+          <i class="fa fa-trash"></i></a></td>
+        </tr>';
+    }
   }
   $data .= '</table>';
   echo $data;
