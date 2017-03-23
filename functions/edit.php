@@ -27,9 +27,19 @@ $neid = strtoupper($_POST['empnum']);
 $pass = $_POST['pass'];
 $nname = strtoupper($_POST['name']);
 $ndept = $_POST['dept'];
+$pname = $_POST['prevname'];
 
 $db = connect();
  $query = $db->prepare("UPDATE teachers SET emp_id = '$neid', pass='$pass', name ='$nname', department = '$ndept' WHERE id = '$nid'");
+ $query1 = $db->prepare("UPDATE comments SET prof = '$nname' WHERE prof = '$pname'");
+ $query1->execute();
+ $query1 = $db->prepare("UPDATE overall SET teacher = '$nname' WHERE teacher = '$pname'");
+ $query1->execute();
+ $query1 = $db->prepare("UPDATE scores SET teach = '$nname' WHERE teach = '$pname'");
+ $query1->execute();
+ $query1 = $db->prepare("UPDATE votes SET teacher_name = '$nname' WHERE teacher_name = '$pname'");
+ $query1->execute();
+
   if($query->execute()){
   header('Location: http://localhost/IT33/chereg.php');
 }
@@ -97,6 +107,7 @@ else
           <label>Employee Name : </label>
           <input type="text" name="name" value="<?php echo $name ?>"
           class="form-control botspace" required style="margin-bottom: 10px; text-transform:uppercase;">
+          <input type="text" hidden name="prevname" value="<?php echo $name; ?>">
           <label>Department : </label>
           <select name="dept" value="<?php echo $department ?>"
           class="form-control botspace" required style="margin-bottom: 10px;">
