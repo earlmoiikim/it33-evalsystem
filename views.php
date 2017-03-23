@@ -9,27 +9,42 @@ if(isset($_POST['searchname'])){
 if(isset($_GET['dept'])){
   if($_GET['dept'] == "ict"){
     $results = searchbydept("ICT");
+    $heading = '<h4 style="text-align: center">ICT Department</h4>
+    ';
   }
   if($_GET['dept'] == "eng"){
     $results = searchbydept("ENGINEERING");
+    $heading = '<h4 style="text-align: center"> ENGINEERING Department</h4>';
   }
   if($_GET['dept'] == "nur"){
     $results = searchbydept("NURSING");
+    $heading = '<h4 style="text-align: center">NURSING Department</h4>
+    ';
   }
   if($_GET['dept'] == "chm"){
     $results = searchbydept("CHM");
+    $heading = '<h4 style="text-align: center">CHM Department</h4>
+    ';
   }
   if($_GET['dept'] == "cri"){
     $results = searchbydept("CRIMINOLOGY");
+    $heading = '<h4 style="text-align: center">CRIMINOLOGY Department</h4>
+    ';
   }
   if($_GET['dept'] == "ba"){
     $results = searchbydept("B.A");
+    $heading = '<h4 style="text-align: center">B.A Department</h4>
+    ';
   }
   if($_GET['dept'] == "edu"){
     $results = searchbydept("EDUCATION");
+    $heading = '<h4 style="text-align: center">EDUCATION Department</h4>
+    ';
   }
   if($_GET['dept'] == "shs"){
     $results = searchbydept("SENIORHIGH");
+    $heading = '<h4 style="text-align: center">SENIORHIGH Department</h4>
+    ';
   }
 }
  ?>
@@ -176,8 +191,10 @@ if(isset($_GET['dept'])){
         <h4 class="modal-title">Evaluation Details</h4>
       </div>
       <div class="modal-body" id="divToPrint">
-        <table style="border-collapse: collapsed; border:1px solid black;" class="table table-responsive table-striped table-bordered text"
-          align="center">
+
+        <table style="border-collapse: collapsed; border:1px solid black;"
+        class="table table-responsive table-striped table-bordered text"
+          align="center" border="1">
           <tr>
             <th width="400px">Name of Faculty</th>
             <th width="300px">Mean Rating</th>
@@ -185,6 +202,7 @@ if(isset($_GET['dept'])){
           </tr>
           <?php foreach($results as $g): ?>
            <h2 style="text-align: center"> Teacher Evaluation Result </text> </h2>
+           <?php echo $heading; ?>
             <br>
             <tr align="center">
               <td width="400px"><?php echo $g->teacher ?></td>
