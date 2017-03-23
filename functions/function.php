@@ -276,7 +276,7 @@ function nursingsection($teacher){
   $section = '<div class="row">
               <div class="col-md-12">
               <p><strong>A2. RLE CLINICAL INSTRUCTORS (FOR NURSING STUDENTS ONLY)</strong></p>
-              <table class="table table-bordered ">
+              <table class="table table-bordered " border="1">
                 <tr>
                   <th class="text-center">Item/Parameter</th>
                   <th class="text-center">Rating</th>

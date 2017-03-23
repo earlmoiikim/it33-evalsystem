@@ -68,6 +68,8 @@ if(empty($r)){
         <h1 class="font" style="margin-bottom: 0px; font-size: 70px;"><?php echo $r->teach; ?></h1>
         <h1 class="font3" style="margin-top: 0px; margin-bottom: 20px;">Department: <?php echo $r->department; ?></h1>
         <!-- Trigger the modal with a button -->
+        <a href="#" class="btn btn-warning" onclick="PrintTable();"
+        title="print this table">Print</a>
         <button type="button" class="btn btn-success" data-toggle="modal"
         data-target="#evaldetails">Evaluation Details</button>
         <button type="button" class="btn btn-warning seecomm" data-toggle="modal"
@@ -110,7 +112,7 @@ if(empty($r)){
             <div class="row">
               <div class="col-md-12">
                 <p><strong>A1. TEACHING SKILLS</strong></p>
-                <table class="table table-bordered ">
+                <table class="table table-bordered" border="1">
                   <tr>
                     <th class="text-center">Item/Parameter</th>
                     <th class="text-center">Rating</th>
@@ -175,7 +177,7 @@ if(empty($r)){
           <div class="row">
             <div class="col-md-12">
               <p><strong>B. EVALUATING STUDENTS</strong></p>
-              <table class="table table-bordered ">
+              <table class="table table-bordered " border="1">
                 <tr>
                   <th class="text-center">Item/Parameter</th>
                   <th class="text-center">Rating</th>
@@ -221,7 +223,7 @@ if(empty($r)){
           <div class="row">
             <div class="col-md-12">
               <p><strong>C. MANAGEMENT SKILLS</strong></p>
-              <table class="table table-bordered ">
+              <table class="table table-bordered " border="1">
                 <tr>
                   <th class="text-center">Item/Parameter</th>
                   <th class="text-center">Rating</th>
@@ -284,7 +286,7 @@ if(empty($r)){
           <div class="row">
             <div class="col-md-12">
               <p><strong>D. INTERPERSONAL RELATIONSHIP & COMMUNICATION SKILLS</strong></p>
-              <table class="table table-bordered ">
+              <table class="table table-bordered " border="1">
                 <tr>
                   <th class="text-center">Item/Parameter</th>
                   <th class="text-center">Rating</th>
@@ -325,7 +327,7 @@ if(empty($r)){
           <div class="row">
             <div class="col-md-12">
               <p><strong>E. PERSONAL QUALITIES</strong></p>
-              <table class="table table-bordered ">
+              <table class="table table-bordered " border="1">
                 <tr>
                   <th class="text-center">Item/Parameter</th>
                   <th class="text-center">Rating</th>
@@ -419,3 +421,13 @@ if(empty($r)){
     text-align: center;
   }
 </style>
+
+<script type="text/javascript">
+function PrintTable() {
+   var divToPrint = document.getElementById('evaldetails');
+   var popupWin = window.open('', '_blank', 'width=500,height=500');
+   popupWin.document.open();
+   popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+    popupWin.document.close();
+        }
+</script>

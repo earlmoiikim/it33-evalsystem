@@ -47,7 +47,7 @@ if(isset($_POST['details'])){
     $nursing = '<div class="row">
       <div class="col-md-12">
       <p><strong>A2. RLE CLINICAL INSTRUCTORS (FOR NURSING STUDENTS ONLY)</strong></p>
-      <table class="table table-bordered ">
+      <table class="table table-bordered " border="1">
         <tr>
           <th class="text-center">Item/Parameter</th>
           <th class="text-center">Rating</th>
@@ -126,7 +126,7 @@ if(isset($_POST['details'])){
   <div class="row">
     <div class="col-md-12">
       <p><strong>A1. TEACHING SKILLS</strong></p>
-      <table class="table table-bordered ">
+      <table class="table table-bordered " border="1">
         <tr>
           <th class="text-center">Item/Parameter</th>
           <th class="text-center">Rating</th>
@@ -192,7 +192,7 @@ $html .= $nursing;
 $html .= '<div class="row">
   <div class="col-md-12">
     <p><strong>B. EVALUATING STUDENTS</strong></p>
-    <table class="table table-bordered ">
+    <table class="table table-bordered " border="1">
       <tr>
         <th class="text-center">Item/Parameter</th>
         <th class="text-center">Rating</th>
@@ -238,7 +238,7 @@ $html .= '<div class="row">
 <div class="row">
   <div class="col-md-12">
     <p><strong>C. MANAGEMENT SKILLS</strong></p>
-    <table class="table table-bordered ">
+    <table class="table table-bordered " border="1">
       <tr>
         <th class="text-center">Item/Parameter</th>
         <th class="text-center">Rating</th>
@@ -301,7 +301,7 @@ $html .= '<div class="row">
 <div class="row">
   <div class="col-md-12">
     <p><strong>D. INTERPERSONAL RELATIONSHIP & COMMUNICATION SKILLS</strong></p>
-    <table class="table table-bordered ">
+    <table class="table table-bordered " border="1">
       <tr>
         <th class="text-center">Item/Parameter</th>
         <th class="text-center">Rating</th>
@@ -342,7 +342,7 @@ $html .= '<div class="row">
 <div class="row">
   <div class="col-md-12">
     <p><strong>E. PERSONAL QUALITIES</strong></p>
-    <table class="table table-bordered ">
+    <table class="table table-bordered " border="1">
       <tr>
         <th class="text-center">Item/Parameter</th>
         <th class="text-center">Rating</th>
