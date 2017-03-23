@@ -112,7 +112,8 @@ if(isset($_GET['dept'])){
   </div>
 
   <div class="row" style="height: 300px; overflow: auto;">
-    <table class="table table-responsive table-striped table-bordered text" align="center">
+    <table class="table table-responsive table-striped table-bordered text" align="center"
+     style="border-collapse: collapse;">
     	<tr>
     		<th>Name of Faculty</th>
     		<th>Mean Rating</th>
@@ -169,17 +170,20 @@ if(isset($_GET['dept'])){
         <h4 class="modal-title">Evaluation Details</h4>
       </div>
       <div class="modal-body" id="divToPrint">
-        <table border="1" class="table table-responsive table-striped table-bordered text" align="center">
+        <table style="border-collapse: collapsed; border:1px solid black;" class="table table-responsive table-striped table-bordered text" 
+          align="center">
           <tr>
-            <th>Name of Faculty</th>
-            <th>Mean Rating</th>
-            <th>Descriptive Equivalent</th>
+            <th width="400px">Name of Faculty</th>
+            <th width="300px">Mean Rating</th>
+            <th width="300px">Descriptive Equivalent</th>
           </tr>
           <?php foreach($results as $g): ?>
-            <tr>
-              <td><?php echo $g->teacher ?></td>
-              <td><?php echo $g->grade ?></td>
-              <td><?php echo $g->description ?></td>
+           <h2 style="text-align: center"> Teacher Evaluation Result </text> </h2>
+            <br>
+            <tr align="center">
+              <td width="400px"><?php echo $g->teacher ?></td>
+              <td width="300px"><?php echo $g->grade ?></td>
+              <td width="300px"><?php echo $g->description ?></td>
             </tr>
           <?php endforeach; ?>
         </table>
@@ -195,6 +199,7 @@ if(isset($_GET['dept'])){
 </html>
 
 <style media="screen" type="text/css">
+
   .text tr th{
     text-align: center;
   }

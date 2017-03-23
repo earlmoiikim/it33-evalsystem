@@ -13,9 +13,9 @@ $data = teacherupdate($id);
               foreach($data as $r){
                 $id = $r['id'];
                 $emp_id = $r['emp_id'];
+                $pass = $r['pass'];
                 $name = $r['name'];
                 $department = $r['department'];
-                $pass = $r['pass'];
               }
 
 }
@@ -24,15 +24,14 @@ if(isset($_POST['update'])){
 
 $nid = strtoupper($_POST['id']);
 $neid = strtoupper($_POST['empnum']);
-$nname = strtoupper($_POST['name']);
 $pass = $_POST['pass'];
+$nname = strtoupper($_POST['name']);
 $ndept = $_POST['dept'];
 
 $db = connect();
-      $query = $db->prepare("UPDATE teachers SET name ='$nname', emp_id = '$neid', pass='$pass' department = '$ndept' WHERE id = '$nid'");
-       if($query->execute()){
-        header('Location: http://localhost/IT33/chereg.php');
-
+ $query = $db->prepare("UPDATE teachers SET emp_id = '$neid', pass='$pass', name ='$nname', department = '$ndept' WHERE id = '$nid'");
+  if($query->execute()){
+  header('Location: http://localhost/IT33/chereg.php');
 }
 else
   header('Location: http://localhost/IT33/chereg.php?error');

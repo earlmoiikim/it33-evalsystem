@@ -23,7 +23,6 @@ if(isset($_GET['dept'])){
     $results = searchbydept("CRIMINOLOGY");
   }
   if($_GET['dept'] == "ba"){
-    echo "in here";
     $results = searchbydept("B.A");
   }
   if($_GET['dept'] == "edu"){
