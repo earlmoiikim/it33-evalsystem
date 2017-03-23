@@ -26,7 +26,7 @@ $output = '';
         <td align="center">' .$g->department.'</td>
         <td align="center">
           <a href="functions/edit.php?edit='.$g->id.'"><button class="btn btn-primary"><i class="fa fa-edit"></i> Edit </button></a>
-          <a href="functions/delete.php?id='.$g->id.'"><button class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </button></a>
+          <a href="functions/delete.php?id='.$g->name.'"><button class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete </button></a>
         </td>
       </tr>
       	';

@@ -2,9 +2,13 @@
 session_start();
 include 'functions/function.php';
 
+if(empty($_SESSION['id'])){
+  header('Location: teacher.php?nosession');
+}
+
 $result = findteacha($_SESSION['id']);
 
-echo $teacher = $result->name;
+$teacher = $result->name;
 $r = scoresbyteacher($teacher);
 if(empty($r)){
   header('Location: teacher.php?no-eval');
@@ -68,7 +72,7 @@ if(empty($r)){
         data-target="#evaldetails">Evaluation Details</button>
         <button type="button" class="btn btn-warning seecomm" data-toggle="modal"
         data-target="#comments-modal" name="button" >See Comments</button>
-        <a href="index.php" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
+        <a href="functions/logout.php" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Log out</a>
       </div>
       <div class="col-md-3"></div>
     </div>

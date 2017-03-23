@@ -1,19 +1,24 @@
 <?php
-include "../database/database.php";
+include "../functions/function.php";
 
-$id = $_GET['id'];
+if(!empty($_GET['id'])){
+	$teacher = $_GET['id'];
+	if (deleteone($teacher)){
+		header('Location: http://localhost/IT33/chereg.php');
+	}
+	else {
+		header('Location: ../chereg.php?error');
+	}
 
-$sql = "DELETE FROM teachers WHERE id='$id' ";
-$db = connect();
-
-$sth = $db->prepare($sql);
-if ($sth->execute()) {
-	header('Location: http://localhost/IT33/chereg.php');
-	
 }
-else {
 
-	echo "ERROR";
+if(!empty($_GET['deleteall'])){
+	if(refreshresults()){
+		header('Location: ../views.php?success');
+	}
+	else{
+		header('Location: ../views.php?error');
+	}
 }
 
 

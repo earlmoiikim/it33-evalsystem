@@ -7,6 +7,7 @@ $temp = '';
 if(isset($_POST['submit'])){
   $eid = strtoupper($_POST['empid']);
   $tname = strtoupper($_POST['name']);
+  $pass = $_POST['pass'];
   $dep = $_POST['dept'];
 
   if(idexist($eid)){
@@ -16,7 +17,7 @@ if(isset($_POST['submit'])){
  else{
 
   $db = connect();
-    $query = $db->prepare("INSERT INTO teachers SET emp_id = '$eid', name = '$tname', department = '$dep'");
+    $query = $db->prepare("INSERT INTO teachers SET emp_id = '$eid', pass='$pass', name = '$tname', department = '$dep'");
 
     if($query->execute()){
         header('Location: http://localhost/IT33/addnewteacher.php?success');
@@ -79,7 +80,10 @@ if(isset($_GET['success'])){
         <h3 align="center">TEACHER'S INFORMATION</h3>
         <label for=""> EMPLOYEE ID : </label>
         <input type="text" name="empid" size="30" class="form-control"
-        style="text-transform:uppercase;" maxlength="7" minlength="7" height= "100" title="Sample format: SRT-102" required><br>
+        style="text-transform:uppercase;" maxlength="7" minlength="7" height= "100" placeholder="Sample format: SRT-102" required><br>
+        <label for=""> PASSWORD : </label>
+        <input type="password" name="pass" size="30" class="form-control"
+         maxlength="20" minlength="8" height= "100" required placeholder="alphanumeric"><br>
         <label for=""> EMPLOYEE NAME : </label>
         <input type="text" name="name" required class="form-control"
         style="text-transform:uppercase;" placeholder="first name - last name"> <br>

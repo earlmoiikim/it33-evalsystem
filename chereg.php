@@ -40,7 +40,9 @@
       <div class="col-md-4">
          <div class="headingteacher"><h2> List of Teachers</h2> </div>
       </div>
-      <div class="col-md-4"></div>
+      <div class="col-md-4">
+
+      </div>
       <div class="col-md-4">
         <div class="pull-right form-group" style="padding-top: 20px;">
           <div class="input-group">

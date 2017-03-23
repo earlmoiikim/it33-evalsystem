@@ -111,7 +111,7 @@ if(isset($_GET['dept'])){
     </div>
   </div>
 
-  <div class="row" style="height: 400px; overflow: auto;">
+  <div class="row" style="height: 300px; overflow: auto;">
     <table class="table table-responsive table-striped table-bordered text" align="center">
     	<tr>
     		<th>Name of Faculty</th>
@@ -130,6 +130,17 @@ if(isset($_GET['dept'])){
         </tr>
       <?php endforeach; ?>
     </table>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="pull-right" style="padding-top: 20px;">
+          <a class="btn btn-danger inline" href="functions/delete.php?deleteall=1"
+          onclick="return confirm('Every Results will be deleted including users! Are you sure?')">
+          <i class="fa fa-warning"></i> Delete all results</a>
+      </div>
+    </div>
+    <div class="col-md-1">
+    </div>
   </div>
 </div>
 

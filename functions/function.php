@@ -185,6 +185,44 @@ function getcomments($teacher){
   return $results = $query->fetchAll(PDO::FETCH_OBJ);
 }
 
+function deleteone($teacher){
+  $db = connect();
+  $query = $db->prepare("DELETE FROM comments
+  WHERE prof = '$teacher'");
+  $query1 = $db->prepare("DELETE FROM overall
+  WHERE teacher = '$teacher'");
+  $query2 = $db->prepare("DELETE FROM scores
+  WHERE teach = '$teacher'");
+  $query3 = $db->prepare("DELETE FROM teachers
+  WHERE name = '$teacher'");
+  $query4 = $db->prepare("DELETE FROM votes
+  WHERE teacher_name = '$teacher'");
+
+  if($query->execute() && $query1->execute() && $query2->execute() &&
+  $query3->execute() && $query4->execute()){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
+function refreshresults(){
+  $db = connect();
+  $query = $db->prepare("DELETE FROM comments");
+  $query1 = $db->prepare("DELETE FROM overall");
+  $query2 = $db->prepare("DELETE FROM scores");
+  $query3 = $db->prepare("DELETE FROM votes");
+  $query4 = $db->prepare("DELETE FROM users");
+  if($query->execute() && $query1->execute() && $query2->execute() &&
+  $query3->execute() && $query4->execute()){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
 function getcommentbyid($id){
   $db = connect();
   $query = $db->prepare("SELECT * FROM comments
@@ -210,6 +248,19 @@ function findteacha($id){
   WHERE emp_id = '$id'");
   $query->execute();
   return $results = $query->fetch(PDO::FETCH_OBJ);
+}
+
+function findteach($id,$pass){
+  $db = connect();
+  $query = $db->prepare("SELECT * FROM teachers
+  WHERE emp_id = '$id' AND pass = '$pass'");
+  $query->execute();
+  if($query->rowCount() > 0){
+    return true;
+  }
+  else{
+    return false;
+  }
 }
 
 function getteacha($teacher){

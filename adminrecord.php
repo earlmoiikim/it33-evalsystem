@@ -51,9 +51,10 @@
 					</div>
 					<div class="col-sm-6">
 						<a href="chereg.php">
-						<button class="btn btn-primary btn-lg btn-block" >
+						<button class="btn btn-primary btn-lg btn-block"
+						style="height: 130px;">
 							<h1><i class="fa fa-user-circle-o"></i>
-								REGISTER <br> A TEACHER</h1>
+								TEACHERS</h1>
 						</button></a>
 					</div>
 				</div>

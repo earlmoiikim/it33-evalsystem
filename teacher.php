@@ -4,7 +4,7 @@ include 'functions/function.php';
 
 if (isset($_POST['submit'])){
 
-    if(findteacha($_POST['id'])){
+    if(findteach($_POST['id'],$_POST['pass'])){
       echo $_POST['id'];
             $_SESSION['id'] = $_POST['id'];
             header("Location: http://localhost/IT33/teacha.php");
@@ -26,7 +26,7 @@ if (isset($_POST['submit'])){
   <link href="style/master.css" rel="stylesheet">
 </head>
 <body style="background:linear-gradient(to bottom right,white,lightblue,white); ">
-  
+
   <header>
     <div class="container-fluid bg-primary">
 
@@ -60,6 +60,8 @@ if (isset($_POST['submit'])){
           <h1 class="text-center">Teacher Log In</h1> <br>
           <input  placeholder="Username" autocomplete="off" name="id" type="text" style="height:50px"
           required class="form-control"/> <br>
+          <input  placeholder="Password" autocomplete="off" name="pass" type="password" style="height:50px"
+          required class="form-control"/> <br>
           <div class="text-center margin">
          <button name="submit" class="btn btn-primary" style="height:43px; margin-top: -2px"> <font size="5px">Submit</button>
         </form>
@@ -80,6 +82,11 @@ if (isset($_POST['submit'])){
       if(isset($_GET['no-eval'])){
         echo '<script type="text/javascript">
                alert("Teacher not yet evaluated!");
+             </script>';
+      }
+      if(isset($_GET['nosession'])){
+        echo '<script type="text/javascript">
+               alert("Login First");
              </script>';
       }
       ?>

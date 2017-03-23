@@ -15,6 +15,7 @@ $data = teacherupdate($id);
                 $emp_id = $r['emp_id'];
                 $name = $r['name'];
                 $department = $r['department'];
+                $pass = $r['pass'];
               }
 
 }
@@ -24,10 +25,11 @@ if(isset($_POST['update'])){
 $nid = strtoupper($_POST['id']);
 $neid = strtoupper($_POST['empnum']);
 $nname = strtoupper($_POST['name']);
+$pass = $_POST['pass'];
 $ndept = $_POST['dept'];
 
 $db = connect();
-      $query = $db->prepare("UPDATE teachers SET name ='$nname', emp_id = '$neid', department = '$ndept' WHERE id = '$nid'");
+      $query = $db->prepare("UPDATE teachers SET name ='$nname', emp_id = '$neid', pass='$pass' department = '$ndept' WHERE id = '$nid'");
        if($query->execute()){
         header('Location: http://localhost/IT33/chereg.php');
 
@@ -89,6 +91,10 @@ else
           <input type="text" name="empnum" value="<?php echo $emp_id ?>"
           class="form-control botspace" size="30" height= "100" minlength="7" maxlength="7"
           title="example format: SRT-123" required style="margin-bottom: 10px; text-transform:uppercase;">
+          <label>Password : </label>
+          <input type="password" name="pass" value="<?php echo $pass ?>"
+          class="form-control botspace" size="30" height= "100" minlength="8" maxlength="20"
+          required style="margin-bottom: 10px;">
           <label>Employee Name : </label>
           <input type="text" name="name" value="<?php echo $name ?>"
           class="form-control botspace" required style="margin-bottom: 10px; text-transform:uppercase;">
