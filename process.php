@@ -379,7 +379,30 @@ $html .= '<div class="row">
   </div>
 </div>';
 
-echo $html;
+  echo $html;
+
+  $r = getcomments($_POST['details']);
+  $data = '';
+  $data .= '<div class="row><div class="col-md-12">
+  <p><strong>COMMENTS</strong></p>
+  <table class="table table-responsive table-striped table-bordered" border="1">
+    <tr>
+      <th>Strength</th>
+      <th>Weakness</th>
+    </tr>';
+  foreach($r as $g){
+    if($g->str == '' && $g->weak == ''){
+      $data .= '';
+    }
+    else{
+      $data .= '  <tr>
+          <td>'.$g->str.'</td>
+          <td>'.$g->weak.'</td>
+        </tr>';
+    }
+  }
+  $data .= '</table></div></div>';
+  echo $data;
 }
 
 if(isset($_POST['comments'])){

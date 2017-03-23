@@ -103,8 +103,6 @@ if(isset($_GET['dept'])){
     </div>
     <div class="col-md-2">
       <div class="pull-right">
-        <a href="#" class="btn btn-warning"
-        title="download overall table" disabled>Download</a>
         <a href="#" class="btn btn-warning" onclick="PrintTable();"
         title="print this table">Print</a>
       </div>
