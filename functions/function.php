@@ -1,6 +1,6 @@
 <?php
  function connect(){
- 	$db = new PDO("mysql:host=localhost;dbname=scheduling_system","root","");
+ 	$db = new PDO("mysql:host=localhost;dbname=scheduling_system","root","creativity31");
  	return $db;
  }
 

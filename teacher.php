@@ -7,10 +7,10 @@ if (isset($_POST['submit'])){
     if(findteach($_POST['id'],$_POST['pass'])){
       echo $_POST['id'];
             $_SESSION['id'] = $_POST['id'];
-            header("Location: http://localhost/IT33/teacha.php");
+            header("Location: teacha.php");
           }
           else{
-            header('Location: http://localhost/IT33/teacher.php?error');
+            header('Location: teacher.php?error');
       }
 }
 
