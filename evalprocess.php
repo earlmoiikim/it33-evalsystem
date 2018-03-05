@@ -6,8 +6,9 @@ if(isset($_POST['submit'])){
   //ready the teacher
   echo $teach = $_POST['teach'];
   //before anything else check if the teacher is already evaluated
-  $sql1 = "SELECT * FROM overall WHERE teacher = '$teach'";
+  $sql1 = "SELECT * FROM overall WHERE teacher_id = '$teach'";
   $sth1 = $db->prepare($sql1);
+  $subject_code = $_POST['subject_code'];
 
   $sth = getteacha($teach);
   echo $sth->department;
@@ -93,7 +94,7 @@ if(isset($_POST['submit'])){
   $weak = $_POST['weak'];
 
   //then check if the teacher is already evaluated by the specific student
-  $sql2 = "SELECT * FROM votes WHERE code = '$code' AND teacher_name = '$teach'";
+  $sql2 = "SELECT * FROM votes WHERE code = '$code' AND teacher_id = '$teach'";
   $sth2 = $db->prepare($sql2);
   if($sth2->execute()){
     if($sth2->rowcount() > 0){
@@ -173,7 +174,7 @@ if(isset($_POST['submit'])){
 		  if($found){ //if the teacher already exist
 		    //use update query
 		    $query2 = $db->prepare("UPDATE overall SET score = '$score',
-		    	students = '$count', grade = '$grade', description = '$description' WHERE teacher = '$teach'");
+		    	students = '$count', grade = '$grade', description = '$description' WHERE teacher_id = '$teach'");
 
           $stmt = $db->prepare("UPDATE scores SET
             ts1 = '$ts_arr[0]', ts2 = '$ts_arr[1]', ts3 = '$ts_arr[2]', ts4 = '$ts_arr[3]', ts5 = '$ts_arr[4]',
@@ -185,12 +186,12 @@ if(isset($_POST['submit'])){
             ms1 = '$ms_arr[0]', ms2 = '$ms_arr[1]', ms3 = '$ms_arr[2]', ms4 = '$ms_arr[3]', ms5 = '$ms_arr[4]',
             ms6 = '$ms_arr[5]', ms7 = '$ms_arr[6]', ms8 = '$ms_arr[7]', ms = '$ms',
             ir1 = '$ir_arr[0]', ir2 = '$ir_arr[1]', ir3 = '$ir_arr[2]', ir4 = '$ir_arr[3]', ir = '$ir',
-            pq1 = '$pq_arr[0]', pq2 = '$pq_arr[1]', pq3 = '$pq_arr[2]', pq = '$pq' WHERE teach = '$teach' ");
+            pq1 = '$pq_arr[0]', pq2 = '$pq_arr[1]', pq3 = '$pq_arr[2]', pq = '$pq' WHERE teacher_id = '$teach' ");
       }
 		  else{
 		    //if the teacher did not exist yet
 		    //use insert into query
-        $stmt = $db->prepare("INSERT INTO scores SET teach = '$teach',
+        $stmt = $db->prepare("INSERT INTO scores SET teacher_id = '$teach', subject_code = '$subject_code',
           ts1 = '$ts_arr[0]', ts2 = '$ts_arr[1]', ts3 = '$ts_arr[2]', ts4 = '$ts_arr[3]', ts5 = '$ts_arr[4]',
           ts6 = '$ts_arr[5]', ts7 = '$ts_arr[6]', ts8 = '$ts_arr[7]', ts9 = '$ts_arr[8]', ts = '$ts',
           ci1 = '$ci_arr[0]', ci2 = '$ci_arr[1]', ci3 = '$ci_arr[2]', ci4 = '$ci_arr[3]',
@@ -202,22 +203,22 @@ if(isset($_POST['submit'])){
           ir1 = '$ir_arr[0]', ir2 = '$ir_arr[1]', ir3 = '$ir_arr[2]', ir4 = '$ir_arr[3]', ir = '$ir',
           pq1 = '$pq_arr[0]', pq2 = '$pq_arr[1]', pq3 = '$pq_arr[2]', pq = '$pq' ");
 
-		    $query2 = $db->prepare("INSERT INTO overall SET teacher = '$teach',
+		    $query2 = $db->prepare("INSERT INTO overall SET teacher_id = '$teach',
 		    	score = '$score', students = '$count', grade = '$grade', description = '$description'");
 
 		  }
 
 		 	//then insert into votes table the record of this particular student evaluating this particular teacher and the comments
-		    $query1 = $db->prepare("INSERT INTO votes SET code = '$code', teacher_name = '$teach'");
-		    $query3 = $db->prepare("INSERT INTO comments SET code = '$code', prof = '$teach', str = '$str', weak = '$weak' ");
+		    $query1 = $db->prepare("INSERT INTO votes SET code = '$code', teacher_id = '$teach'");
+		    $query3 = $db->prepare("INSERT INTO comments SET code = '$code', teacher_id = '$teach', str = '$str', weak = '$weak' ");
 
 		    if($stmt->execute() && $query2->execute() && $query1->execute() && $query3->execute()){
-		        header('Location: http://localhost/IT33/tt.php?success');
+		        header('Location: tt.php?success');
 		        echo "success";
 		    }
 		    else{
 		    	echo "error";
-		        header('Location: http://localhost/IT33/tt.php?error=2');
+		        // header('Location: tt.php?error=2');
 		    }
     	}
   	}

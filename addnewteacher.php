@@ -20,11 +20,11 @@ if(isset($_POST['submit'])){
     $query = $db->prepare("INSERT INTO teachers SET emp_id = '$eid', pass='$pass', name = '$tname', department = '$dep'");
 
     if($query->execute()){
-        header('Location: http://localhost/IT33/addnewteacher.php?success');
+        header('Location: addnewteacher.php?success');
 
     }
     else{
-        header('Location: http://localhost/IT33/addnewteacher.php?ERROR');
+        header('Location: addnewteacher.php?ERROR');
     }
 }
 

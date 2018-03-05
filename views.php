@@ -135,10 +135,10 @@ if(isset($_GET['dept'])){
     	</tr>
     	<?php foreach($results as $g): ?>
         <tr>
-          <td><?php echo $g->teacher ?></td>
+          <td><?php echo $g->name ?></td>
           <td><?php echo $g->grade ?></td>
           <td><?php echo $g->description ?></td>
-          <td><button data-id="<?php echo $g->teacher;?>" type="button" class="btn btn-primary details"
+          <td><button data-id="<?php echo $g->teacher_id;?>" type="button" class="btn btn-primary details"
            data-toggle="modal">See details</button>
          </td>
         </tr>

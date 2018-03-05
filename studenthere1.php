@@ -13,17 +13,17 @@ if (isset($_POST['submit'])) {
 
                    if($us == $user){
                     $_SESSION['code'] = $user;
-                    header("Location: http://localhost/IT33/tt.php");
+                    header("Location: tt.php");
 
                    }
                    else{
-                    header('Location: http://localhost/IT33/studenthere1.php?error');
+                    header('Location: studenthere1.php?error');
 
                    }
             }
           }
           else{
-            header('Location: http://localhost/IT33/studenthere1.php?error');
+            header('Location: studenthere1.php?error');
 
 }
 

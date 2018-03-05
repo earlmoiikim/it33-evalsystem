@@ -104,7 +104,7 @@ if(isset($_POST['details'])){
     $nursing = '';
   }
 
-  $html .= '<label for="">Instructor : </label> <p style="display: inline">'.$r->teach.'</p>
+  $html .= '<label for="">Instructor : </label> <p style="display: inline">'.$r->name.'</p>
   <div class="pull-right">
     <label for="">Department : </label> <p style="display: inline">'.$r->department.'</p>
   </div>

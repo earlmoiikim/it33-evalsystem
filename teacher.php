@@ -15,6 +15,7 @@ if (isset($_POST['submit'])){
 }
 
 ?>
+
 <html>
 <head>
 	<title>Teacher LogIn</title>
