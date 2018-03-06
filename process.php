@@ -462,4 +462,78 @@ if(isset($_POST['commentid'])){
   echo $data;
 }
 
+//summary
+if(isset($_POST['suggestion'])){
+  $html = '';
+  $r = scoresbyteacher($_POST['suggestion']);
+  if($r->department == 'NURSING'){
+    $nursing = '
+        <tr>
+          <td class="text-center">Clinical Evaluation</td>
+          <td class="text-center">'.($g = sectionrating($r->ci, $r->students, 7)).'</td>
+          <td class="text-center">'.description($g).'</td>
+          <td class="text-center">'.suggestion($g).'</td>
+        </tr>';
+  }
+  else{
+    $nursing = '';
+  }
+
+  $html .= '<label for="">Instructor : </label> <p style="display: inline">'.$r->name.'</p>
+  <div class="pull-right">
+    <label for="">Department : </label> <p style="display: inline">'.$r->department.'</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered " border="1">
+        <tr>
+          <th class="">Evaluation Section</th>
+          <th class="text-center">Rating</th>
+          <th class="text-center">Qualitative Description</th>
+          <th class="text-center">Suggestion</th>
+        </tr>
+        <tr>
+          <td class="text-left"> Teaching Skills </td>
+          <td class="text-center">'.($g = sectionrating($r->ts, $r->students, 9)).'</td>
+          <td class="text-center">'.description($g).'</td>
+          <td class="text-center">'.suggestion($g).'</td>
+        </tr>';
+
+$html .= $nursing;
+
+$html .= '
+      <tr>
+        <td class="text-left"> Evaluating Students </td>
+        <td class="text-center">'.($g = sectionrating($r->es, $r->students, 5)).'</td>
+        <td class="text-center">'.description($g).'</td>
+        <td class="text-center">'.suggestion($g).'</td>
+      </tr>
+      <tr>
+        <td class="text-left">  Management Skills </td>
+        <td class="text-center">'.($g = sectionrating($r->ms, $r->students, 8)).'</td>
+        <td class="text-center">'.description($g).'</td>
+        <td class="text-center">'.suggestion($g).'</td>
+      </tr>
+      <tr>
+        <td class="text-left"> Communication Skills </td>
+        <td class="text-center">'.($g = sectionrating($r->ir, $r->students, 4)).'</td>
+        <td class="text-center">'.description($g).'</td>
+        <td class="text-center">'.suggestion($g).'</td>
+      </tr>
+      <tr>
+        <td class="text-left"> Personal Qualities </td>
+        <td class="text-center">'.($g = sectionrating($r->ir, $r->students, 4)).'</td>
+        <td class="text-center">'.description($g).'</td>
+        <td class="text-center">'.suggestion($g).'</td>
+      </tr>
+
+    </table>
+  </div>
+</div>';
+
+  echo $html;
+}
+
+
 ?>

@@ -98,6 +98,22 @@ function description($grade){
   return $description;
 }
 
+function suggestion($grade){
+  if($grade >= 1 && $grade <= 1.49){
+    $description = "Needs seminar for this skill";
+  }
+  elseif ($grade > 1.5 && $grade <= 2.49) {
+    $description = "Needs more improvement";
+  }
+  elseif ($grade > 2.5 && $grade <= 3.49) {
+    $description = "Sharpen more of this skill";
+  }
+  else{
+    $description = "Nomited for an award";
+  }
+  return $description;
+}
+
 function rating($grade, $numberOfStudents){
   $rating = $grade / $numberOfStudents;
   $rating = number_format($rating, 1, '.', ',');

@@ -73,19 +73,19 @@ else{
     <div class="col-md-1" style="display: inline;">
       <a href="studenthere1.php" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
     </div>
-    <div class="col-md-7">
-      <h3 class="font3" style="display: inline;">Select Teacher :</h3>
-    <select required name="teach" style="height: 30px; width: 200px; border-radius: 5px; margin-bottom: 30px; display: inline;">
+    <div class="col-md-11">
+      <h3 class="font3" style="display: inline;">Select Teacher from the list :</h3>
+    <select required name="teach" style="height: 30px; width: 250px; border-radius: 5px; margin-bottom: 30px; display: inline;">
       <option disabled selected hidden value>- Teacher -</option>
     <?php foreach ($res as $g):?>
       <option value="<?php echo $g->id;?>"> <?php echo $g->name;?> </option>
     <?php endforeach; ?>
     </select>
     </div>
-    <div class="col-md-4">
-      <input type="text" name="subject_code" required class="form-control"
-        style="text-transform:uppercase;" placeholder="Subject Code ex. IT44">
-    </div>
+    
+      <input type="hidden" name="subject_code" required class="form-control"
+        style="text-transform:uppercase;" placeholder="Subject Code ex. IT44" value="none">
+    
     <!--
     <input type="text"  name="teach" value="<?php //echo $g->id; ?>"> -->
     <table class="table table-responsive table-striped tables">
