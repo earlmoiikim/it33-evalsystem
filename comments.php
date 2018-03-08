@@ -6,6 +6,7 @@ $results = getoverall();
 if(isset($_POST['searchname'])){
   $results = searchbyname($_POST['searchname']);
 }
+
 if(isset($_GET['dept'])){
   if($_GET['dept'] == "ict"){
     $results = searchbydept("ICT");
@@ -113,8 +114,8 @@ if(isset($_GET['dept'])){
           </tr>
           <?php foreach($results as $g): ?>
             <tr>
-              <td><?php echo $g->teacher ?></td>
-              <td><button data-id="<?php echo $g->teacher;?>" type="button" class="btn btn-primary details"
+              <td><?php echo $g->name ?></td>
+              <td><button data-id="<?php echo $g->teacher_id;?>" type="button" class="btn btn-primary details"
                data-toggle="modal">See comments</button>
              </td>
             </tr>

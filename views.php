@@ -1,3 +1,7 @@
+ <script type="text/javascript">
+  var heading = false;
+ </script>
+
 <?php
 include 'functions/function.php';
 
@@ -7,6 +11,9 @@ if(isset($_POST['searchname'])){
   $results = searchbyname($_POST['searchname']);
 }
 if(isset($_GET['dept'])){
+  echo '<script type="text/javascript">
+  var heading = true;
+ </script>';
   if($_GET['dept'] == "ict"){
     $results = searchbydept("ICT");
     $heading = '<h4 style="text-align: center">ICT Department</h4>
@@ -109,7 +116,7 @@ if(isset($_GET['dept'])){
     </div>
     <div class="col-md-3">
       <div class="form-group">
-        <form class="input-group" action="#" method="post">
+        <form class="input-group" action="" method="post">
           <input class="form-control" type="text" name="searchname" placeholder="Search by name">
           <span class="input-group-addon"> <i class="fa fa-search"></i>
           </span>
@@ -118,7 +125,7 @@ if(isset($_GET['dept'])){
     </div>
     <div class="col-md-2">
       <div class="pull-right">
-        <a href="#" class="btn btn-warning" onclick="PrintTable();"
+        <a href="" class="btn btn-warning" onclick="PrintTable();"
         title="print this table">Print</a>
       </div>
     </div>
@@ -135,11 +142,13 @@ if(isset($_GET['dept'])){
     	</tr>
     	<?php foreach($results as $g): ?>
         <tr>
-          <td><?php echo $g->teacher ?></td>
+          <td><?php echo $g->name ?></td>
           <td><?php echo $g->grade ?></td>
           <td><?php echo $g->description ?></td>
-          <td><button data-id="<?php echo $g->teacher;?>" type="button" class="btn btn-primary details"
-           data-toggle="modal">See details</button>
+          <td><button data-id="<?php echo $g->teacher_id;?>" type="button" class="btn btn-primary details"
+           data-toggle="modal">Details</button>
+           <button data-id="<?php echo $g->teacher_id;?>" type="button" class="btn btn-success suggestion"
+           data-toggle="modal">Suggestion</button>
          </td>
         </tr>
       <?php endforeach; ?>
@@ -205,7 +214,7 @@ if(isset($_GET['dept'])){
            <?php echo $heading; ?>
             <br>
             <tr align="center">
-              <td width="400px"><?php echo $g->teacher ?></td>
+              <td width="400px"><?php echo $g->name ?></td>
               <td width="300px"><?php echo $g->grade ?></td>
               <td width="300px"><?php echo $g->description ?></td>
             </tr>
@@ -252,12 +261,33 @@ if(isset($_GET['dept'])){
         });
       }
   });
+
+  $(document).on("click", ".suggestion", function(){
+      var id = $(this).data('id');
+      if(id != ''){
+        $.ajax({
+          url: "process.php",
+          method: "post",
+          data: {suggestion:id},
+          success: function(data){
+            $('#eval-details').html(data);
+            $('#details').modal('show');
+          }
+        });
+      }
+  });
+
   function PrintTable() {
-     var divToPrint = document.getElementById('divToPrint');
-     var popupWin = window.open('', '_blank', 'width=500,height=500');
-     popupWin.document.open();
-     popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+    if(heading){
+      var divToPrint = document.getElementById('divToPrint');
+       var popupWin = window.open('', '_blank', 'width=500,height=500');
+       popupWin.document.open();
+       popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
       popupWin.document.close();
+    }else{
+      alert('Choose department first!');
+    }
+  
           }
   function Printdetails() {
      var divToPrint = document.getElementById('eval-details');

@@ -61,17 +61,6 @@ function findname($TeahersName){
 	}
 
 
-
-  function getemp(){
-	$db = connect();
-	$sth = $db->prepare("Select * From registration order by id");
-	$sth->execute();
-	$results = $sth->fetchAll(PDO::FETCH_OBJ);
-	return $results;
-}
-
-
-
 function Eval4Department_exists($time, $Eval4, $Department){
  $db = connect();
  $query = $db->prepare("SELECT * from registration WHERE  Eval2 = ? AND  Eval4 = ? AND Department = ?");
@@ -109,6 +98,22 @@ function description($grade){
   return $description;
 }
 
+function suggestion($grade){
+  if($grade >= 1 && $grade <= 1.49){
+    $description = "Needs seminar for this skill";
+  }
+  elseif ($grade > 1.5 && $grade <= 2.49) {
+    $description = "Needs more improvement";
+  }
+  elseif ($grade > 2.5 && $grade <= 3.49) {
+    $description = "Sharpen more of this skill";
+  }
+  else{
+    $description = "Nomited for an award";
+  }
+  return $description;
+}
+
 function rating($grade, $numberOfStudents){
   $rating = $grade / $numberOfStudents;
   $rating = number_format($rating, 1, '.', ',');
@@ -123,7 +128,7 @@ function sectionrating($grade, $numberOfStudents, $items){
 
 function getscores($teach){
   $db = connect();
-  $sql1 = "SELECT * FROM scores WHERE teach = '$teach'";
+  $sql1 = "SELECT * FROM scores WHERE teacher_id = '$teach'";
   $sth1 = $db->prepare($sql1);
   $sth1->execute();
   return $result = $sth1->fetch(PDO::FETCH_OBJ);
@@ -131,7 +136,7 @@ function getscores($teach){
 
 function getoverall(){
   $dbs = connect();
-  $query = $dbs->prepare("SELECT * from overall");
+  $query = $dbs->prepare("SELECT * from overall INNER JOIN teachers ON overall.teacher_id = teachers.id");
   $query->execute();
   return $results = $query->fetchAll(PDO::FETCH_OBJ);
 }
@@ -153,7 +158,7 @@ function searchbyname($name){
 function searchbydept($dept){
   $db = connect();
   $query = $db->prepare("SELECT * From overall
-    INNER JOIN teachers ON overall.teacher = teachers.name
+    INNER JOIN teachers ON overall.teacher_id = teachers.id
     WHERE department = '$dept'");
     $query->execute();
   return $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -162,9 +167,9 @@ function searchbydept($dept){
 function scoresbyteacher($teach){
   $db = connect();
   $query = $db->prepare("SELECT * From overall
-    INNER JOIN teachers ON overall.teacher = teachers.name
-    INNER JOIN scores ON teachers.name = scores.teach
-    WHERE overall.teacher = '$teach'");
+    INNER JOIN teachers ON overall.teacher_id = teachers.id
+    INNER JOIN scores ON teachers.id = scores.teacher_id
+    WHERE overall.teacher_id = '$teach'");
   $query->execute();
   return $results = $query->fetch(PDO::FETCH_OBJ);
 }
@@ -180,7 +185,7 @@ function userbycode($code){
 function getcomments($teacher){
   $db = connect();
   $query = $db->prepare("SELECT * FROM comments
-  WHERE prof = '$teacher'");
+  WHERE teacher_id = '$teacher'");
   $query->execute();
   return $results = $query->fetchAll(PDO::FETCH_OBJ);
 }
@@ -188,15 +193,15 @@ function getcomments($teacher){
 function deleteone($teacher){
   $db = connect();
   $query = $db->prepare("DELETE FROM comments
-  WHERE prof = '$teacher'");
+  WHERE teacher_id = '$teacher'");
   $query1 = $db->prepare("DELETE FROM overall
-  WHERE teacher = '$teacher'");
+  WHERE teacher_id = '$teacher'");
   $query2 = $db->prepare("DELETE FROM scores
-  WHERE teach = '$teacher'");
+  WHERE teacher_id = '$teacher'");
   $query3 = $db->prepare("DELETE FROM teachers
-  WHERE name = '$teacher'");
+  WHERE id = '$teacher'");
   $query4 = $db->prepare("DELETE FROM votes
-  WHERE teacher_name = '$teacher'");
+  WHERE teacher_id = '$teacher'");
 
   if($query->execute() && $query1->execute() && $query2->execute() &&
   $query3->execute() && $query4->execute()){
@@ -266,7 +271,7 @@ function findteach($id,$pass){
 function getteacha($teacher){
   $db = connect();
   $query = $db->prepare("SELECT * FROM teachers
-  WHERE name = '$teacher'");
+  WHERE id = '$teacher'");
   $query->execute();
   return $results = $query->fetch(PDO::FETCH_OBJ);
 }

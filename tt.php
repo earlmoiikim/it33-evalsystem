@@ -70,16 +70,22 @@ else{
     <form id="insert_form" action="evalprocess.php" method="POST"
     class="text-center form-group" style="margin-top: 20px;">
 
-    <div class="pull-left" style="display: inline;">
+    <div class="col-md-1" style="display: inline;">
       <a href="studenthere1.php" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Back</a>
     </div>
-      <h3 class="font3" style="display: inline;">Select Your Teacher's Name:</h3>
+    <div class="col-md-11">
+      <h3 class="font3" style="display: inline;">Select Teacher from the list :</h3>
     <select required name="teach" style="height: 30px; width: 250px; border-radius: 5px; margin-bottom: 30px; display: inline;">
       <option disabled selected hidden value>- Teacher -</option>
     <?php foreach ($res as $g):?>
-      <option value="<?php echo $g->name;?>"> <?php echo $g->name;?> </option>
+      <option value="<?php echo $g->id;?>"> <?php echo $g->name;?> </option>
     <?php endforeach; ?>
     </select>
+    </div>
+    
+      <input type="hidden" name="subject_code" required class="form-control"
+        style="text-transform:uppercase;" placeholder="Subject Code ex. IT44" value="none">
+    
     <!--
     <input type="text"  name="teach" value="<?php //echo $g->id; ?>"> -->
     <table class="table table-responsive table-striped tables">

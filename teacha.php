@@ -8,7 +8,7 @@ if(empty($_SESSION['id'])){
 
 $result = findteacha($_SESSION['id']);
 
-$teacher = $result->name;
+$teacher = $result->id;
 $r = scoresbyteacher($teacher);
 if(empty($r)){
   header('Location: teacher.php?no-eval');
@@ -65,7 +65,7 @@ if(empty($r)){
       <div class="col-md-3"> </div>
       <div class="col-md-6 text-center bgwhite padvertical"
       style="border-radius: 10px; padding-bottom: 50px;">
-        <h1 class="font" style="margin-bottom: 0px; font-size: 70px;"><?php echo $r->teach; ?></h1>
+        <h1 class="font" style="margin-bottom: 0px; font-size: 70px;"><?php echo $r->name; ?></h1>
         <h1 class="font3" style="margin-top: 0px; margin-bottom: 20px;">Department: <?php echo $r->department; ?></h1>
         <!-- Trigger the modal with a button -->
         <a href="#" class="btn btn-warning" onclick="PrintTable();"
@@ -90,7 +90,7 @@ if(empty($r)){
             <h4 class="modal-title">Evaluation Details</h4>
           </div>
           <div class="modal-body" id="details">
-            <label for="">Instructor : </label> <p style="display: inline"> <?php echo $r->teacher; ?></p>
+            <label for="">Instructor : </label> <p style="display: inline"> <?php echo $r->name; ?></p>
             <div class="pull-right">
               <label for="">Department : </label> <p style="display: inline"> <?php echo $r->department; ?></p>
             </div>
@@ -384,14 +384,14 @@ if(empty($r)){
           </div>
           <div class="modal-body" id="comments">
             <div class="text-center">
-              <h3><?php echo $r->teach; ?></h3>
+              <h3><?php echo $r->name; ?></h3>
             </div>
             <table class="table table-responsive table-striped table-bordered">
               <tr>
                 <th>Strength</th>
                 <th>Weakness</th>
               </tr>
-              <?php foreach(getcomments($r->teach) as $res): ?>
+              <?php foreach(getcomments($r->teacher_id) as $res): ?>
                 <tr>
                   <td><?php echo $res->str; ?></td>
                   <td><?php echo $res->weak; ?></td>
